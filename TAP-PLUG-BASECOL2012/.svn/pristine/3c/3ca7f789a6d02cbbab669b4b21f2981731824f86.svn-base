@@ -1,0 +1,66 @@
+package org.vamdc.basecol.builders.states;
+
+import java.util.List;
+
+import org.vamdc.basecol.constants.BasecolQuantumNumber;
+import org.vamdc.basecol.constants.BasecolUnits;
+import org.vamdc.basecol.dao.CaseByCase;
+import org.vamdc.basecol.dao.EnergyTables;
+import org.vamdc.basecol.dao.EnergyTablesLevels;
+import org.vamdc.basecol.dao.EnergyTablesLevelsQuantumNumbers;
+import org.vamdc.basecol.xsams.BasecolMoleculeStructure;
+import org.vamdc.xsams.util.IDs;
+import org.vamdc.xsams.util.QuantumNumber;
+import org.vamdc.xsams.util.QuantumNumber.QNType;
+import org.vamdc.xsams.util.StateCore;
+
+public class BasecolStateCore extends StateCore {
+	public BasecolStateCore(EnergyTables myetable,
+			EnergyTablesLevels levels) {
+
+		this.setID(IDs.getStateID(levels.getIdEnergyTable(),levels.getLevel()));
+		this.setEnergy(levels.getEnergy());
+		this.setEnergyUnits(BasecolUnits.getXSAMSUnit(levels.getLvlEtableRel().getEnergyUnit().intValue()));
+		this.setEnergyOrigin(myetable.getEnergyOrigin());
+		CaseByCase mycase = levels.getLvlEtableRel().getCaseRel();
+		if (mycase==null){
+			List<CaseByCase> mycases = levels.getLvlEtableRel().getElementRel().getCaseRel();
+			for(CaseByCase thiscase:mycases){
+				if (thiscase.getIdEnergyTable()==0){
+					mycase=thiscase;
+					break;
+				}
+			}
+		}
+		if (mycase!=null){
+			this.setCaseID(mycase.getIdCase());
+		}else{
+			this.setCaseID(0);
+		}
+
+		this.setNuclearspinsymmetry(myetable.getSymelementRel().getSymmetryRel().getDesignation());
+
+		this.setDescription(myetable.getTitle());
+
+		this.setElecState(myetable.getElectronicComponentDescription());
+
+		//add state quantum numbers:
+		for (EnergyTablesLevelsQuantumNumbers myqn:levels.getQNumbersRel()){
+			QNType type = BasecolQuantumNumber.GetCaseQNType(myqn.getIdQuantumNumber());
+			if (type!=null){
+				QuantumNumber qNum = new QuantumNumber();
+				qNum.setType(type);
+				qNum.setModeIndex(BasecolQuantumNumber.GetModeIdx(myqn.getIdQuantumNumber()));
+				//If we have referenced nucleus
+				if (levels.getLvlEtableRel().getHyperfineRefMolNucleusID(myqn.getIdQuantumNumber())!=null){
+					qNum.setRefSpin(
+							BasecolMoleculeStructure.getAtomID(myetable.getElementRel().getIdElement().intValue(), 
+									levels.getLvlEtableRel().getHyperfineRefMolNucleusID(myqn.getIdQuantumNumber())));
+				}
+				qNum.setValue(myqn.getValue());
+				this.AddQNum(qNum);
+			}
+		}
+
+	}
+}

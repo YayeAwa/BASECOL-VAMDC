@@ -1,0 +1,21 @@
+package org.vamdc.basecol.constants;
+
+public class ElementTypes {
+	public static final byte Molecule = 0;
+	public static final byte Atom = 1;
+	public static final byte Particle = 2;
+	public static final byte MolecIonPositive = 3;
+	public static final byte MolecIonNegative = 4;
+	/*
+	+---------------+------------------------+
+	| idElementType | designation            |
+	+---------------+------------------------+
+	|             0 | molecule               |
+	|             1 | atom                   |
+	|             2 | particule              |
+	|             3 | positive molecular ion |
+	|             4 | negative molecular ion |
+	+---------------+------------------------+
+	*/
+
+}

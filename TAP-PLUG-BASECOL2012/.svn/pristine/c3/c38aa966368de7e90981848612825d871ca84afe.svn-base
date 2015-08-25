@@ -1,0 +1,16 @@
+package org.vamdc.basecol.xsams;
+
+import java.util.List;
+
+import org.vamdc.basecol.dao.RefsAuthors;
+import org.vamdc.xsams.sources.AuthorsType;
+
+public class Authors extends AuthorsType{
+	
+	public Authors(List<RefsAuthors> authors){
+		for (RefsAuthors myauthor :authors){
+			addAuthor(myauthor.getFirstName()+" "+myauthor.getSurname());
+		}
+	}
+	
+}

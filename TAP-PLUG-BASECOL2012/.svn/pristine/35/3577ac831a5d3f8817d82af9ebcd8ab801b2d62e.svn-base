@@ -1,0 +1,36 @@
+package org.vamdc.basecol.xsams;
+
+import org.vamdc.basecol.dao.Collisions;
+import org.vamdc.xsams.XSAMSManager;
+import org.vamdc.xsams.schema.MethodCategoryType;
+import org.vamdc.xsams.schema.MethodType;
+import org.vamdc.xsams.util.IDs;
+
+public class MethodDataSet extends MethodType{
+
+	public MethodDataSet(Collisions data){
+		super();
+		this.setMethodID(getMethodID(data));
+		
+		this.setCategory(MethodCategoryType.THEORY);
+		
+		this.setDescription("Accuracy: "+data.getPrecis());
+	}
+	
+	private static String getMethodID(Collisions data){
+		return IDs.getMethodID(data.getIdCollision().intValue())+"D";
+	}
+	
+	public static MethodType getMethod(Collisions data,XSAMSManager document){
+		String id = getMethodID(data);
+		MethodType result = document.getMethod(id);
+		
+		if (result==null){
+			result=new MethodDataSet(data);
+			document.addMethod(result);
+		}
+		
+		return result;
+	}
+
+}

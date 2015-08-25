@@ -1,0 +1,42 @@
+package org.vamdc.basecol.xsams;
+
+import static org.junit.Assert.*;
+
+import org.apache.cayenne.access.DataContext;
+import org.apache.cayenne.exp.Expression;
+import org.apache.cayenne.exp.ExpressionFactory;
+import org.apache.cayenne.query.SelectQuery;
+import org.junit.Test;
+import org.vamdc.basecol.dao.RefsArticles;
+
+public class SourceTest {
+	DataContext context = DataContext.createDataContext();
+	
+	@Test
+	public void testBibSourceConstructor(){
+		//TODO: temp fix to exclude journal=0
+		Expression sel = ExpressionFactory.noMatchExp("journalID", 0);
+		
+		SelectQuery query = new SelectQuery(RefsArticles.class,sel);
+		query.addPrefetch("journalRel");
+		query.addPrefetch("flatAuthorRel");
+		
+		for (Object source:context.performQuery(query)){
+			assertTrue(source instanceof RefsArticles);
+			Source src = new Source((RefsArticles) source);
+			
+			assertTrue (src.getTitle().length()>0);
+			
+			//testPagesBeginEnd(src);
+			
+		}
+	}
+
+	private void testPagesBeginEnd(Source src) {
+		Integer test;
+		if (src.getPageBegin()!=null && src.getPageBegin().length()>0)
+			test = Integer.valueOf(src.getPageBegin());
+		if (src.getPageEnd()!=null && src.getPageEnd().length()>0)
+			test = Integer.valueOf(src.getPageEnd());
+	}
+}

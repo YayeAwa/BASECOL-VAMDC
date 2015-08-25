@@ -1,0 +1,61 @@
+package org.vamdc.basecol.xsams;
+
+import org.vamdc.basecol.dao.Collisions;
+import org.vamdc.basecol.misc.LevelSet;
+import org.vamdc.basecol.misc.RatesTemperatureMap;
+import org.vamdc.xsams.XSAMSManager;
+import org.vamdc.xsams.common.DataSetType;
+import org.vamdc.xsams.common.DataSetsType;
+import org.vamdc.xsams.process.collisions.CollisionalProcessClassType;
+import org.vamdc.xsams.process.collisions.CollisionalTransitionType;
+import org.vamdc.xsams.schema.SpeciesStateRefType;
+import org.vamdc.xsams.util.IDs;
+
+public class Collision extends CollisionalTransitionType{
+
+
+	public Collision(
+			XSAMSManager document,
+			Collisions data,
+			RatesTemperatureMap rates){
+
+		this.setId(IDs.getID('P',"C"+data.getIdCollision()+rates.getID()));
+
+		this.addSources(Source.getSources(data.getReferenceRel(),document,true));
+
+		this.setMethodRef(MethodCollision.getMethod(data, document));
+		
+		this.setComments(data.getTitle());
+
+		int targetETable = data.getTargetETableRel().getIdEnergyTable().intValue();
+		int colliderETable = data.getColliderETableRel().getIdEnergyTable().intValue();
+		LevelSet levels = rates.getMylevels();
+		
+		this.getReactants().add(
+				getRef(document, targetETable, levels.iTLevel));
+		this.getReactants().add(
+				getRef(document,colliderETable, levels.iCLevel));
+		this.getProducts().add(
+				getRef(document,targetETable,levels.fTLevel));
+		this.getProducts().add(
+				getRef(document,colliderETable, levels.fCLevel));
+
+		DataSetType ratesDataSet = new RateCoefficientDataSet(rates);
+		
+		ratesDataSet.getTabulatedDatas().get(0).setMethodRef(MethodDataSet.getMethod(data,document));
+		
+		this.setDataSets(
+				new DataSetsType(ratesDataSet));
+
+		this.setProcessClass(new CollisionalProcessClassType("inel"));
+		
+
+	}
+
+	private SpeciesStateRefType getRef(XSAMSManager document, int refETable, int refLevel) {
+		 SpeciesStateRefType result= document.getStateRef(IDs.getStateID(refETable,refLevel));
+		 if (result==null || result.getSpeciesRef()==null)
+			 result = document.getSpeciesRef(IDs.getSpecieID(refETable));
+		 return result;
+	}
+}
