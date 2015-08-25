@@ -3,15 +3,9 @@
 	<map name="BasecolTestMap"/>
 
 	<node name="BasecolTestNode"
-		 factory="org.apache.cayenne.configuration.server.XMLPoolingDataSourceFactory"
-		 schema-update-strategy="org.apache.cayenne.access.dbsync.SkipSchemaUpdateStrategy"
-		>
-		<map-ref name="BasecolTestMap"/>
-		<data-source>
-			<driver value="com.mysql.jdbc.Driver"/>
-			<url value="jdbc:mysql://localhost/basecol2012_2015"/>
-			<connectionPool min="1" max="100"/>
-			<login userName="awa" password="1234"/>
-		</data-source>
-	</node>
+		 datasource="basecol2012.conf"
+		 factory="org.apache.cayenne.configuration.server.DBCPDataSourceFactory"
+		 schema-update-strategy="org.apache.cayenne.access.dbsync.SkipSchemaUpdateStrategy">
+			<map-ref name="BasecolTestMap"/>
+	 </node>
 </domain>
