@@ -10,6 +10,7 @@ import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
 import org.vamdc.BasecolTest.dao.EnergyTables;
 import org.vamdc.BasecolTest.dao.EnergyTablesLevels;
+import org.vamdc.BasecolTest.dao.RefsGroups;
 import org.vamdc.basecol.xsams.MethodEtable;
 import org.vamdc.basecol.xsams.MolecularState;
 import org.vamdc.basecol.xsams.Molecule;
@@ -64,6 +65,10 @@ public class MoleculeBuilder {
 		Expression levelsspec = ExpressionFactory.matchExp("toEnergyTables.idEnergyTable",eTable.getIdEnergyTable());
 		SelectQuery query = new SelectQuery(EnergyTablesLevels.class, levelsspec);
 		query.addPrefetch("energytablesLevelsQuantumnumberss");//query.addPrefetch("qNumbersRel");
+		
+		//Load sources
+		List<RefsGroups> refs=eTable.getRefsGroupsFromIdRefGroups(context);
+		System.out.println("et"+eTable.getIdEnergyTable()+"list "+refs.size());
 
 		/*TODO:
 		 * Here add restrictables processing
@@ -100,7 +105,9 @@ public class MoleculeBuilder {
 				isomer=newState;
 			
 			//Add source references
-			newState.addSources(Source.getSources(eTable.getToRefsGroups(),document,false));
+			//newState.addSources(Source.getSources(eTable.getToRefsGroups(),document,false));
+			
+			newState.addSources(Source.getSources(refs,document,false));
 			
 			//Add method
 			newState.setMethodRef(MethodEtable.getMethod(eTable.getExp(), document));

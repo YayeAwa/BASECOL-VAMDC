@@ -248,15 +248,12 @@ public abstract class _EnergyTables extends CayenneDataObject {
     }
 
 
-    public void addToToRefsGroups(RefsGroups obj) {
-        addToManyTarget(TO_REFS_GROUPS_PROPERTY, obj, true);
+    public void setToRefsGroups(RefsGroups toRefsGroups) {
+        setToOneTarget(TO_REFS_GROUPS_PROPERTY, toRefsGroups, true);
     }
-    public void removeFromToRefsGroups(RefsGroups obj) {
-        removeToManyTarget(TO_REFS_GROUPS_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<RefsGroups> getToRefsGroups() {
-        return (List<RefsGroups>)readProperty(TO_REFS_GROUPS_PROPERTY);
+
+    public RefsGroups getToRefsGroups() {
+        return (RefsGroups)readProperty(TO_REFS_GROUPS_PROPERTY);
     }
 
 

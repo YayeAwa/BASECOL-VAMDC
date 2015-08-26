@@ -269,51 +269,39 @@ public abstract class _Collisions extends CayenneDataObject {
     }
 
 
-    public void addToToRefsGroups(RefsGroups obj) {
-        addToManyTarget(TO_REFS_GROUPS_PROPERTY, obj, true);
+    public void setToRefsGroups(RefsGroups toRefsGroups) {
+        setToOneTarget(TO_REFS_GROUPS_PROPERTY, toRefsGroups, true);
     }
-    public void removeFromToRefsGroups(RefsGroups obj) {
-        removeToManyTarget(TO_REFS_GROUPS_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<RefsGroups> getToRefsGroups() {
-        return (List<RefsGroups>)readProperty(TO_REFS_GROUPS_PROPERTY);
+
+    public RefsGroups getToRefsGroups() {
+        return (RefsGroups)readProperty(TO_REFS_GROUPS_PROPERTY);
     }
 
 
-    public void addToToRefsMethod(RefsGroups obj) {
-        addToManyTarget(TO_REFS_METHOD_PROPERTY, obj, true);
+    public void setToRefsMethod(RefsGroups toRefsMethod) {
+        setToOneTarget(TO_REFS_METHOD_PROPERTY, toRefsMethod, true);
     }
-    public void removeFromToRefsMethod(RefsGroups obj) {
-        removeToManyTarget(TO_REFS_METHOD_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<RefsGroups> getToRefsMethod() {
-        return (List<RefsGroups>)readProperty(TO_REFS_METHOD_PROPERTY);
+
+    public RefsGroups getToRefsMethod() {
+        return (RefsGroups)readProperty(TO_REFS_METHOD_PROPERTY);
     }
 
 
-    public void addToToRefsPES(RefsGroups obj) {
-        addToManyTarget(TO_REFS_PES_PROPERTY, obj, true);
+    public void setToRefsPES(RefsGroups toRefsPES) {
+        setToOneTarget(TO_REFS_PES_PROPERTY, toRefsPES, true);
     }
-    public void removeFromToRefsPES(RefsGroups obj) {
-        removeToManyTarget(TO_REFS_PES_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<RefsGroups> getToRefsPES() {
-        return (List<RefsGroups>)readProperty(TO_REFS_PES_PROPERTY);
+
+    public RefsGroups getToRefsPES() {
+        return (RefsGroups)readProperty(TO_REFS_PES_PROPERTY);
     }
 
 
-    public void addToToRefsReduMass(RefsGroups obj) {
-        addToManyTarget(TO_REFS_REDU_MASS_PROPERTY, obj, true);
+    public void setToRefsReduMass(RefsGroups toRefsReduMass) {
+        setToOneTarget(TO_REFS_REDU_MASS_PROPERTY, toRefsReduMass, true);
     }
-    public void removeFromToRefsReduMass(RefsGroups obj) {
-        removeToManyTarget(TO_REFS_REDU_MASS_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<RefsGroups> getToRefsReduMass() {
-        return (List<RefsGroups>)readProperty(TO_REFS_REDU_MASS_PROPERTY);
+
+    public RefsGroups getToRefsReduMass() {
+        return (RefsGroups)readProperty(TO_REFS_REDU_MASS_PROPERTY);
     }
 
 

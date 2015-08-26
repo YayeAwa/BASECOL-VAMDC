@@ -684,16 +684,16 @@
 	<db-relationship name="memberss" source="Collaboration_Groups" target="Members" toMany="true">
 		<db-attribute-pair source="idColGroup" target="idColGroup"/>
 	</db-relationship>
-	<db-relationship name="Refs_Groups_ARRAY" source="Collisions" target="Refs_Groups" toMany="true">
+	<db-relationship name="Refs_Groups_ARRAY" source="Collisions" target="Refs_Groups" toMany="false">
 		<db-attribute-pair source="idRefGroup" target="idGroup"/>
 	</db-relationship>
-	<db-relationship name="Refs_Groups_Method" source="Collisions" target="Refs_Groups" toMany="true">
+	<db-relationship name="Refs_Groups_Method" source="Collisions" target="Refs_Groups" toMany="false">
 		<db-attribute-pair source="methodIdRefGroup" target="idGroup"/>
 	</db-relationship>
-	<db-relationship name="Refs_Groups_PES" source="Collisions" target="Refs_Groups" toMany="true">
+	<db-relationship name="Refs_Groups_PES" source="Collisions" target="Refs_Groups" toMany="false">
 		<db-attribute-pair source="pesIdRefGroup" target="idGroup"/>
 	</db-relationship>
-	<db-relationship name="Refs_Groups_RedMass" source="Collisions" target="Refs_Groups" toMany="true">
+	<db-relationship name="Refs_Groups_RedMass" source="Collisions" target="Refs_Groups" toMany="false">
 		<db-attribute-pair source="reducedMassIdRefGroup" target="idGroup"/>
 	</db-relationship>
 	<db-relationship name="collisionsProcessuses" source="Collisions" target="Collisions_Processus" toDependentPK="true" toMany="true">
@@ -779,9 +779,6 @@
 	</db-relationship>
 	<db-relationship name="toElementTypes" source="Elements" target="ElementTypes" toMany="false">
 		<db-attribute-pair source="idElementType" target="idElementType"/>
-	</db-relationship>
-	<db-relationship name="Refs_Groups_ARRAY" source="EnergyTables" target="Refs_Groups" toMany="true">
-		<db-attribute-pair source="idRefGroup" target="idRefGroup"/>
 	</db-relationship>
 	<db-relationship name="casebycases" source="EnergyTables" target="CaseByCase" toMany="true">
 		<db-attribute-pair source="idElement" target="idElement"/>
@@ -1212,7 +1209,7 @@
 	<obj-relationship name="hyperfineQnumss" source="EnergyTables" target="HyperfineQNums" deleteRule="Deny" db-relationship-path="hyperfineQnumss"/>
 	<obj-relationship name="matchedenergytableses" source="EnergyTables" target="MatchedEnergyTables" deleteRule="Deny" db-relationship-path="matchedenergytableses"/>
 	<obj-relationship name="toElements" source="EnergyTables" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
-	<obj-relationship name="toRefsGroups" source="EnergyTables" target="RefsGroups" deleteRule="Deny" db-relationship-path="Refs_Groups_ARRAY"/>
+	<obj-relationship name="toRefsGroups" source="EnergyTables" target="RefsGroups" deleteRule="Nullify" db-relationship-path="toRefsGroups"/>
 	<obj-relationship name="toSymmetries" source="EnergyTables" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries"/>
 	<obj-relationship name="toUnits" source="EnergyTables" target="Units" deleteRule="Nullify" db-relationship-path="toUnits"/>
 	<obj-relationship name="energytablesLevelsQuantumnumberss" source="EnergyTablesLevels" target="EnergyTablesLevelsQuantumNumbers" deleteRule="Deny" db-relationship-path="energytablesLevelsQuantumnumberss"/>

@@ -69,7 +69,6 @@ public class Source extends SourceType{
 			List<RefsGroups> referenceRel, XSAMSManager document, boolean filterSource) {
 		//Here sources will be added
 		HashMap<String,SourceType> ret = new HashMap<String,SourceType> ();
-		//ArrayList<SourceType> result = new ArrayList<SourceType>();
 
 		/*always add database self-reference*/
 		//result.add(document.getSource(IDs.getSourceID(0)));

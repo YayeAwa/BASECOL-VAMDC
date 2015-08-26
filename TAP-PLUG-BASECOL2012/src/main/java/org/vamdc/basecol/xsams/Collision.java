@@ -3,6 +3,7 @@ package org.vamdc.basecol.xsams;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.cayenne.access.DataContext;
 import org.vamdc.BasecolTest.dao.Collisions;
 import org.vamdc.BasecolTest.dao.LevelGroups;
 import org.vamdc.BasecolTest.dao.RefsGroups;
@@ -20,19 +21,22 @@ public class Collision extends CollisionalTransitionType{
 
 
 	public Collision(
+			
 			XSAMSManager document,
 			Collisions data,
-			RatesTemperatureMap rates, Map<Long, LevelGroups> levelmap){
+			RatesTemperatureMap rates, Map<Long, LevelGroups> levelmap,
+			List<RefsGroups> allRefs,List<RefsGroups> methodRefs){
 
 		this.setId(IDs.getID('P',"C"+data.getIdCollision()+levelmap.get(rates.getLevelGroupID()).getID()));
 
-		List<RefsGroups> allRefs = data.getToRefsGroups();
-		allRefs.addAll(data.getToRefsMethod());
+		//List<RefsGroups> allRefs = data.getToRefsGroups();
+		/*allRefs.addAll(data.getToRefsMethod());
 		allRefs.addAll(data.getToRefsPES());
-		allRefs.addAll(data.getToRefsReduMass());
+		allRefs.addAll(data.getToRefsReduMass());*/
+		
 		this.addSources(Source.getSources(allRefs,document,true));
 
-		this.setMethodRef(MethodCollision.getMethod(data, document));
+		this.setMethodRef(MethodCollision.getMethod( data, document,allRefs));
 		
 		this.setComments(data.getTitle());
 

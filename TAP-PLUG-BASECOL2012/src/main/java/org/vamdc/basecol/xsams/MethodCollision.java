@@ -1,29 +1,20 @@
 package org.vamdc.basecol.xsams;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import org.vamdc.BasecolTest.dao.Collisions;
+import org.vamdc.BasecolTest.dao.RefsGroups;
 import org.vamdc.xsams.XSAMSManager;
-import org.vamdc.xsams.schema.MethodType;
 import org.vamdc.xsams.schema.MethodCategoryType;
-import org.vamdc.xsams.schema.SourceType;
+import org.vamdc.xsams.schema.MethodType;
 import org.vamdc.xsams.util.IDs;
 
 public class MethodCollision extends MethodType{
 
-	public MethodCollision(Collisions data,XSAMSManager document){
+	public MethodCollision( Collisions data,XSAMSManager document,List<RefsGroups> methodrefs){
 		super();
-		Set<SourceType> sources = new HashSet<SourceType>();
-		sources.addAll(
-				Source.getSources(data.getToRefsGroups()/*getReferenceRel()*/, document, false));
-		sources.addAll(
-				Source.getSources(data.getToRefsMethod()/*getMethodRef()*/, document, false));
-		sources.addAll(
-				Source.getSources(data.getToRefsPES()/*getPESRef()*/, document, false));
-		sources.addAll(
-				Source.getSources(data.getToRefsReduMass()/*getReducedMassRef()*/, document, false));
-		this.addSources(sources);
+		
+		this.addSources(Source.getSources(methodrefs, document, false));
 		
 		this.setComments("Recommended: "+data.getRecommended());
 		
@@ -59,12 +50,12 @@ public class MethodCollision extends MethodType{
 		return IDs.getMethodID((int)data.getIdCollision()/*getIdCollision().intValue()*/);
 	}
 	
-	public static MethodType getMethod(Collisions data,XSAMSManager document){
+	public static MethodType getMethod(Collisions data,XSAMSManager document,List<RefsGroups> methodrefs){
 		String id = getMethodID(data);
 		MethodType result = document.getMethod(id);
 		
 		if (result==null){
-			result=new MethodCollision(data,document);
+			result=new MethodCollision(data,document,methodrefs);
 			document.addMethod(result);
 		}
 		

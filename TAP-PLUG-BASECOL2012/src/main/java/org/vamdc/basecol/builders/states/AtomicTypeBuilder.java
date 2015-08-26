@@ -10,6 +10,7 @@ import org.apache.cayenne.exp.ExpressionFactory;
 import org.apache.cayenne.query.SelectQuery;
 import org.vamdc.BasecolTest.dao.EnergyTables;
 import org.vamdc.BasecolTest.dao.EnergyTablesLevels;
+import org.vamdc.BasecolTest.dao.RefsGroups;
 import org.vamdc.basecol.xsams.Atom;
 import org.vamdc.basecol.xsams.AtomState;
 import org.vamdc.basecol.xsams.Source;
@@ -41,6 +42,10 @@ public class AtomicTypeBuilder {
 			SelectQuery query = new SelectQuery(EnergyTablesLevels.class, levelsspec);
 			query.addPrefetch("energytablesLevelsQuantumnumberss");//query.addPrefetch("qNumbersRel");
 
+			//Load sources
+			List<RefsGroups> refs=myetable.getRefsGroupsFromIdRefGroups(context);
+			System.out.println("et"+myetable.getIdEnergyTable()+"list "+refs.size());
+			
 			/*TODO:
 			 * Here add restrictables processing
 			 * */
@@ -50,7 +55,8 @@ public class AtomicTypeBuilder {
 				AtomicStateType newstate = new AtomState(statedata);
 
 				//Put all references
-				newstate.addSources(Source.getSources(myetable.getToRefsGroups()/*getReferenceRel()*/,myrequest.getXsamsManager(),false));
+				//newstate.addSources(Source.getSources(myetable.getToRefsGroups()/*getReferenceRel()*/,myrequest.getXsamsManager(),false));
+				newstate.addSources(Source.getSources(refs,myrequest.getXsamsManager(),false));
 				
 				newstate.setComments(myetable.getTitle());
 				//Save level

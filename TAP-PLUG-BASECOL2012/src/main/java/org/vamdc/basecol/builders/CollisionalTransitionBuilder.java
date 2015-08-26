@@ -12,6 +12,7 @@ import org.vamdc.basecol.builders.states.ElementBuilder;
 import org.vamdc.BasecolTest.dao.Collisions;
 import org.vamdc.BasecolTest.dao.RateCoefficients;
 import org.vamdc.BasecolTest.dao.LevelGroups;
+import org.vamdc.BasecolTest.dao.RefsGroups;
 import org.vamdc.basecol.mapping.Restrictables;
 import org.vamdc.BasecolTest.misc.RatesTemperatureMap;
 import org.vamdc.basecol.xsams.Collision;
@@ -67,12 +68,18 @@ public class CollisionalTransitionBuilder {
 		for (LevelGroups lg:data.getLevelgroupss()){
 			levelmap.put(lg.getIdLevelGroup(), lg);
 		}
+		//chercher les sources avant de faire la boucle
+		DataContext context=(DataContext) request.getCayenneContext();
+		List<RefsGroups> allRefs = data.getRefsGroupsFromIdRefGroups(context);
+		List<RefsGroups> methodRefs = data.getRefsGroupsFromIdRefMethods(context);
+		allRefs.addAll(methodRefs);
+		allRefs.addAll(data.getRefsGroupsFromIdRefMass(context));
+		allRefs.addAll(data.getRefsGroupsFromIdRefPES(context));
 		
 		for (RatesTemperatureMap rates:RateCoefficients.getTempDependency((DataContext)request.getCayenneContext(), rcexpr)){
 			//System.out.println("ratecoeff levels"+keys.fCLevel+keys.fTLevel+keys.iCLevel+keys.iTLevel);
 
-
-			if (!xsamsroot.addProcess(new Collision(xsamsroot,data,rates,levelmap)))
+			if (!xsamsroot.addProcess(new Collision(xsamsroot,data,rates,levelmap,allRefs,methodRefs)))
 				return false;
 		}
 		
