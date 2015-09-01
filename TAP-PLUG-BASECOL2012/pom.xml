@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.vamdc.tap.plugin</groupId>
 	<artifactId>TAP-BASECOL2012</artifactId>
+	<packaging>jar</packaging>
 	<name>Basecol node plugin</name>
 	<description>Basecol plugin for VAMDC-TAP Java node software</description>
 

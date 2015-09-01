@@ -27,7 +27,7 @@ public class AtomicTypeBuilder {
 	public static void addAtom(EnergyTables myetable, RequestInterface myrequest){
 		if (!myrequest.checkBranch(Requestable.Atoms)) 
 			return;
-		String atomID = IDs.getSpecieID(myetable.getToElements()./*getElementRel()*/getIdElement().intValue());
+		String atomID = IDs.getSpecieID(myetable.getToElements().getIdElement().intValue());
 		if (myrequest.getXsamsManager().getElement(atomID)==null)
 		{//build atom description only in case we don't have it yet, in other case just add states
 			AtomType myatom = new Atom(myetable);
@@ -64,7 +64,7 @@ public class AtomicTypeBuilder {
 			}
 			//Add states to XSAMS tree
 			myrequest.getXsamsManager().addStates(
-					IDs.getSpecieID(myetable.getToElements()/*getElementRel()*/.getIdElement().intValue()),
+					IDs.getSpecieID(myetable.getToElements().getIdElement().intValue()),
 					mystates);
 		}
 

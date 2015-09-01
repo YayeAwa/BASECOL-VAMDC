@@ -3,7 +3,6 @@ package org.vamdc.basecol.xsams;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.cayenne.access.DataContext;
 import org.vamdc.BasecolTest.dao.Collisions;
 import org.vamdc.BasecolTest.dao.LevelGroups;
 import org.vamdc.BasecolTest.dao.RefsGroups;
@@ -28,11 +27,6 @@ public class Collision extends CollisionalTransitionType{
 			List<RefsGroups> allRefs,List<RefsGroups> methodRefs){
 
 		this.setId(IDs.getID('P',"C"+data.getIdCollision()+levelmap.get(rates.getLevelGroupID()).getID()));
-
-		//List<RefsGroups> allRefs = data.getToRefsGroups();
-		/*allRefs.addAll(data.getToRefsMethod());
-		allRefs.addAll(data.getToRefsPES());
-		allRefs.addAll(data.getToRefsReduMass());*/
 		
 		this.addSources(Source.getSources(allRefs,document,true));
 
@@ -42,7 +36,7 @@ public class Collision extends CollisionalTransitionType{
 
 		int targetETable = data.getToEnergyTarget().getIdEnergyTable().intValue();
 		int colliderETable = data.getToEnergyCollider().getIdEnergyTable().intValue();
-		//LevelSet levels = rates.getMylevels();
+		
 		LevelGroups lg=levelmap.get(rates.getLevelGroupID());
 		
 		this.getReactants().add(

@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
+	<property name="defaultPackage" value="org.vamdc.BasecolTest.dao"/>
+	<db-entity name="CaseByCase" catalog="basecol2012">
+		<db-attribute name="idCase" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="idElement" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idEnergyTable" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="Collaboration_Groups" catalog="basecol2012">
+		<db-attribute name="address" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="idColGroup" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="website" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="Collisions" catalog="basecol2012">
+		<db-attribute name="basisSet" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="comment" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="creationDate" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="idCollision" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idContributor" type="BIGINT" length="10"/>
+		<db-attribute name="idEnergyTableOf" type="BIGINT" length="10"/>
+		<db-attribute name="idEnergyTableWith" type="BIGINT" length="10"/>
+		<db-attribute name="idRefGroup" type="BIGINT" length="10"/>
+		<db-attribute name="isVisible" type="TINYINT" isMandatory="true" length="3"/>
+		<db-attribute name="methodComment" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="methodIdRefGroup" type="BIGINT" length="10"/>
+		<db-attribute name="modificationDate" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="pesComment" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="pesIdRefGroup" type="BIGINT" length="10"/>
+		<db-attribute name="rangeOfEnergy" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="recommended" type="CHAR" isMandatory="true" length="4"/>
+		<db-attribute name="reducedMassIdRefGroup" type="BIGINT" length="10"/>
+		<db-attribute name="reducedMassUnit" type="BIGINT" length="10"/>
+		<db-attribute name="reducedMassValue" type="DOUBLE" length="22"/>
+		<db-attribute name="title" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="year" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="Collisions_Processus" catalog="basecol2012">
+		<db-attribute name="idCollision" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idProcessus" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="Collisions_Scientists" catalog="basecol2012">
+		<db-attribute name="idCollision" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idScientist" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="rank" type="INTEGER" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="Contributors" catalog="basecol2012">
+		<db-attribute name="firstName" type="VARCHAR" isMandatory="true" length="30"/>
+		<db-attribute name="idContributor" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="lastName" type="VARCHAR" isMandatory="true" length="30"/>
+		<db-attribute name="mail" type="VARCHAR" isMandatory="true" length="100"/>
+	</db-entity>
+	<db-entity name="ElementTypes" catalog="basecol2012">
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="30"/>
+		<db-attribute name="idElementType" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="Elements" catalog="basecol2012">
+		<db-attribute name="charge" type="SMALLINT" isMandatory="true" length="5"/>
+		<db-attribute name="designation" type="VARCHAR" length="20"/>
+		<db-attribute name="idElement" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idElementType" type="TINYINT" length="3"/>
+		<db-attribute name="inchi" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="inchi_key" type="VARCHAR" length="27"/>
+		<db-attribute name="latex" type="VARCHAR" length="20"/>
+		<db-attribute name="molecularConstant" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="molecularMass" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="stoichiometricFormula" type="VARCHAR" length="50"/>
+		<db-attribute name="typeOfMolecule" type="CHAR" length="17"/>
+	</db-entity>
+	<db-entity name="EnergyTables" catalog="basecol2012">
+		<db-attribute name="comment" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="creationDate" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="electronicComponentDescription" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="energyOrigin" type="VARCHAR" length="100"/>
+		<db-attribute name="energyUnit" type="BIGINT" length="10"/>
+		<db-attribute name="exp" type="CHAR" isMandatory="true" length="4"/>
+		<db-attribute name="idElement" type="BIGINT" length="10"/>
+		<db-attribute name="idEnergyTable" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idRefGroup" type="BIGINT" length="10"/>
+		<db-attribute name="idSymmetry" type="TINYINT" length="3"/>
+		<db-attribute name="isVisible" type="TINYINT" isMandatory="true" length="3"/>
+		<db-attribute name="modificationDate" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="termSymbol" type="VARCHAR" length="100"/>
+		<db-attribute name="title" type="LONGVARCHAR" isMandatory="true" length="65535"/>
+		<db-attribute name="totalMolecularProjectionL" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="totalSpinMomentumS" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="vibrationalComponentDescription" type="VARCHAR" isMandatory="true" length="100"/>
+	</db-entity>
+	<db-entity name="EnergyTables_Levels" catalog="basecol2012">
+		<db-attribute name="degeneracy" type="INTEGER" length="10"/>
+		<db-attribute name="energy" type="DOUBLE" length="13" scale="6"/>
+		<db-attribute name="idEnergyTable" type="BIGINT" length="10"/>
+		<db-attribute name="idLevel" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="level" type="SMALLINT" isMandatory="true" length="5"/>
+	</db-entity>
+	<db-entity name="EnergyTables_Levels_QuantumNumbers" catalog="basecol2012">
+		<db-attribute name="idLevel" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idQuantumNumber" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="stringValue" type="VARCHAR" length="3"/>
+		<db-attribute name="value" type="DOUBLE" isMandatory="true" length="22"/>
+	</db-entity>
+	<db-entity name="EnergyTables_Processus" catalog="basecol2012">
+		<db-attribute name="idEnergyTable" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idProcessus" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="EnergyTables_QuantumNumbers" catalog="basecol2012">
+		<db-attribute name="idEnergyTable" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idQuantumNumber" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="position" type="TINYINT" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="FitEquations" catalog="basecol2012">
+		<db-attribute name="description" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="idFitEquation" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="processing" type="CHAR" isMandatory="true" length="7"/>
+	</db-entity>
+	<db-entity name="FitValues" catalog="basecol2012">
+		<db-attribute name="coefficient" type="VARCHAR" isPrimaryKey="true" isMandatory="true" length="15"/>
+		<db-attribute name="idFit" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idLevelGroup" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="position" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="DOUBLE" isPrimaryKey="true" isMandatory="true" length="22"/>
+	</db-entity>
+	<db-entity name="Fits" catalog="basecol2012">
+		<db-attribute name="idCollision" type="BIGINT" length="10"/>
+		<db-attribute name="idFit" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idFitEquation" type="SMALLINT" length="5"/>
+		<db-attribute name="precis" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="text" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="title" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="ForeignValues" catalog="basecol2012">
+		<db-attribute name="einsteinCoefficient" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="finalLevelOf" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="frequency" type="DECIMAL" isMandatory="true" length="12" scale="4"/>
+		<db-attribute name="gUp" type="SMALLINT" isMandatory="true" length="5"/>
+		<db-attribute name="idForeignValuesSet" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="initialLevelOf" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="uncertainty" type="DECIMAL" isMandatory="true" length="7" scale="4"/>
+	</db-entity>
+	<db-entity name="ForeignValuesSets" catalog="basecol2012">
+		<db-attribute name="idForeignValuesSet" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="idRef" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="ForeignValuesSets_Collisions" catalog="basecol2012">
+		<db-attribute name="idCollision" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idForeignValuesSet" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+	</db-entity>
+	<db-entity name="Hyperfine_QNums" catalog="basecol2012">
+		<db-attribute name="idEnergyTable" type="BIGINT" length="10"/>
+		<db-attribute name="idMolAtom" type="INTEGER" length="10"/>
+		<db-attribute name="idQNumber" type="BIGINT" length="10"/>
+		<db-attribute name="idRecord" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idRefQNumber" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="LevelGroups" catalog="basecol2012">
+		<db-attribute name="finalLevelOf" type="BIGINT" length="10"/>
+		<db-attribute name="finalLevelWith" type="BIGINT" length="10"/>
+		<db-attribute name="idCollision" type="BIGINT" length="10"/>
+		<db-attribute name="idLevelGroup" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="initialLevelOf" type="BIGINT" length="10"/>
+		<db-attribute name="initialLevelWith" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="MatchedEnergyTables" catalog="basecol2012">
+		<db-attribute name="idEnergyTable" type="BIGINT" length="10"/>
+		<db-attribute name="idMatchedEnergyTable" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="idRef" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="MatchedEnergyTables_Collisions" catalog="basecol2012">
+		<db-attribute name="idCollision" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idMatchedEnergyTable" type="SMALLINT" isPrimaryKey="true" isMandatory="true" length="5"/>
+	</db-entity>
+	<db-entity name="MatchedEnergyTables_Levels" catalog="basecol2012">
+		<db-attribute name="degeneracy" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="energy" type="DOUBLE" isMandatory="true" length="10" scale="6"/>
+		<db-attribute name="idLevel" type="BIGINT" length="10"/>
+		<db-attribute name="idMatchedEnergyTable" type="SMALLINT" length="5"/>
+		<db-attribute name="idMatchedLevel" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="Members" catalog="basecol2012">
+		<db-attribute name="email" type="VARCHAR" length="100"/>
+		<db-attribute name="firstname" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="function" type="VARCHAR" length="30"/>
+		<db-attribute name="idColGroup" type="BIGINT" length="10"/>
+		<db-attribute name="idMember" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="site" type="VARCHAR" length="100"/>
+		<db-attribute name="surname" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="telephone" type="VARCHAR" length="100"/>
+	</db-entity>
+	<db-entity name="MoleculeAtoms" catalog="basecol2012">
+		<db-attribute name="atom_charge" type="SMALLINT" length="5"/>
+		<db-attribute name="atom_count" type="SMALLINT" length="5"/>
+		<db-attribute name="atom_id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="hydrogen_count" type="SMALLINT" length="5"/>
+		<db-attribute name="idElement" type="BIGINT" length="10"/>
+		<db-attribute name="nucleus_id" type="INTEGER" length="10"/>
+	</db-entity>
+	<db-entity name="MoleculeBonds" catalog="basecol2012">
+		<db-attribute name="atom_1_id" type="INTEGER" length="10"/>
+		<db-attribute name="atom_2_id" type="INTEGER" length="10"/>
+		<db-attribute name="bond_id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="bond_order" type="CHAR" isMandatory="true" length="1"/>
+		<db-attribute name="idElement" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="Nuclei" catalog="basecol2012">
+		<db-attribute name="isotope" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="most_abundant" type="BIT" isMandatory="true"/>
+		<db-attribute name="nuclear_charge" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="nucleus_id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="spin" type="REAL" isMandatory="true" length="12"/>
+		<db-attribute name="symbol" type="CHAR" isMandatory="true" length="2"/>
+	</db-entity>
+	<db-entity name="PartitionFunctions" catalog="basecol2012">
+		<db-attribute name="idElement" type="BIGINT" length="10"/>
+		<db-attribute name="idPartition" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idRefGroup" type="BIGINT" length="10"/>
+		<db-attribute name="idSymmetry" type="TINYINT" length="3"/>
+	</db-entity>
+	<db-entity name="PartitionFunctions_Values" catalog="basecol2012">
+		<db-attribute name="Q" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="T" type="DOUBLE" isPrimaryKey="true" isMandatory="true" length="22"/>
+		<db-attribute name="idPartition" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="Processus" catalog="basecol2012">
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="idProcessus" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="Publications" catalog="basecol2012">
+		<db-attribute name="authors" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="idPublication" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="journal" type="VARCHAR" length="50"/>
+		<db-attribute name="link" type="VARCHAR" length="255"/>
+		<db-attribute name="title" type="LONGVARCHAR" isMandatory="true" length="65535"/>
+		<db-attribute name="type" type="CHAR" isMandatory="true" length="21"/>
+		<db-attribute name="year" type="INTEGER" length="7"/>
+	</db-entity>
+	<db-entity name="QuantumNumbers" catalog="basecol2012">
+		<db-attribute name="comment" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="designation" type="VARCHAR" length="20"/>
+		<db-attribute name="idQuantumNumber" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="RateCoefficients" catalog="basecol2012">
+		<db-attribute name="data" type="DOUBLE" isMandatory="true" length="22"/>
+		<db-attribute name="idCollision" type="BIGINT" length="10"/>
+		<db-attribute name="idLevelGroup" type="BIGINT" length="10"/>
+		<db-attribute name="idRate" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="isEffectiveRate" type="BIT" isMandatory="true"/>
+		<db-attribute name="temperature" type="DOUBLE" isMandatory="true" length="22"/>
+	</db-entity>
+	<db-entity name="Refs_Adsnotes" catalog="basecol2012">
+		<db-attribute name="idAdsnote" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="LONGVARCHAR" length="65535"/>
+	</db-entity>
+	<db-entity name="Refs_Articles" catalog="basecol2012">
+		<db-attribute name="idAdsnote" type="BIGINT" length="10"/>
+		<db-attribute name="idArticle" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idJournal" type="BIGINT" length="10"/>
+		<db-attribute name="issue" type="VARCHAR" length="10"/>
+		<db-attribute name="linkToData" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="month" type="TINYINT" isMandatory="true" length="3"/>
+		<db-attribute name="page" type="VARCHAR" length="20"/>
+		<db-attribute name="status" type="CHAR" isMandatory="true" length="4"/>
+		<db-attribute name="title" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="url" type="VARCHAR" length="255"/>
+		<db-attribute name="volume" type="VARCHAR" length="10"/>
+		<db-attribute name="year" type="BIGINT" length="8"/>
+	</db-entity>
+	<db-entity name="Refs_Articles_Authors" catalog="basecol2012">
+		<db-attribute name="id" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idArticle" type="BIGINT" length="10"/>
+		<db-attribute name="idAuthor" type="BIGINT" length="10"/>
+	</db-entity>
+	<db-entity name="Refs_Articles_Keywords" catalog="basecol2012">
+		<db-attribute name="idArticle" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idKeyword" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="Refs_Authors" catalog="basecol2012">
+		<db-attribute name="firstName" type="VARCHAR" length="20"/>
+		<db-attribute name="idAuthor" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="surname" type="VARCHAR" length="20"/>
+	</db-entity>
+	<db-entity name="Refs_Groups" catalog="basecol2012">
+		<db-attribute name="idArticle" type="BIGINT" length="10"/>
+		<db-attribute name="idGroup" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idRefGroup" type="BIGINT" isMandatory="true" length="10"/>
+		<db-attribute name="isSource" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="Refs_Journals" catalog="basecol2012">
+		<db-attribute name="category" type="CHAR" length="21"/>
+		<db-attribute name="idJournal" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="name" type="VARCHAR" length="255"/>
+		<db-attribute name="smallName" type="VARCHAR" length="10"/>
+	</db-entity>
+	<db-entity name="Refs_Keywords" catalog="basecol2012">
+		<db-attribute name="idCategory" type="BIGINT" length="10"/>
+		<db-attribute name="idKeyword" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="value" type="VARCHAR" length="50"/>
+	</db-entity>
+	<db-entity name="Refs_Keywords_Categories" catalog="basecol2012">
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="30"/>
+		<db-attribute name="idCategory" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+	</db-entity>
+	<db-entity name="Refs_MatchedData" catalog="basecol2012">
+		<db-attribute name="creationDate" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="dateOfEntry" type="VARCHAR" isMandatory="true" length="15"/>
+		<db-attribute name="fileName" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-attribute name="idChemicalElementSpectro" type="BIGINT" isMandatory="true" length="8"/>
+		<db-attribute name="idRef" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idSpectroDatabase" type="TINYINT" length="3"/>
+		<db-attribute name="infosUrl" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="version" type="CHAR" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="Scientists" catalog="basecol2012">
+		<db-attribute name="firstName" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="idScientist" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="lastName" type="VARCHAR" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="SpectroDatabases" catalog="basecol2012">
+		<db-attribute name="idSpectroDatabase" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="3"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="Status_Availables" catalog="basecol2012">
+		<db-attribute name="date" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="idCollision" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="status" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<db-entity name="Status_CurrentWorks" catalog="basecol2012">
+		<db-attribute name="details" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="group" type="VARCHAR" length="255"/>
+		<db-attribute name="groupDetails" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="idCurrentWork" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idElementOf" type="BIGINT" length="10"/>
+		<db-attribute name="idElementWith" type="BIGINT" length="10"/>
+		<db-attribute name="idSymmetryOf" type="TINYINT" length="3"/>
+		<db-attribute name="idSymmetryWith" type="TINYINT" length="3"/>
+		<db-attribute name="temperatures" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="Status_Needs" catalog="basecol2012">
+		<db-attribute name="idElementOf" type="BIGINT" length="10"/>
+		<db-attribute name="idElementWith" type="BIGINT" length="10"/>
+		<db-attribute name="idNeed" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idSymmetryOf" type="TINYINT" length="3"/>
+		<db-attribute name="idSymmetryWith" type="TINYINT" length="3"/>
+		<db-attribute name="region" type="VARCHAR" length="255"/>
+		<db-attribute name="regionDetails" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="temperatures" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="Symmetries" catalog="basecol2012">
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="idSymmetry" type="TINYINT" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="Units" catalog="basecol2012">
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="idUnit" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="latex" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="xsamsUnit" type="VARCHAR" isMandatory="true" length="20"/>
+	</db-entity>
+	<db-entity name="Versions" catalog="basecol2012">
+		<db-attribute name="comment" type="LONGVARCHAR" length="65535"/>
+		<db-attribute name="creationDate" type="DATE" isMandatory="true" length="10"/>
+		<db-attribute name="idVersion" type="BIGINT" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="idVersionedElement" type="BIGINT" isMandatory="true" length="10"/>
+		<db-attribute name="versionNumber" type="TINYINT" isMandatory="true" length="3"/>
+		<db-attribute name="versionType" type="CHAR" isMandatory="true" length="11"/>
+	</db-entity>
+	<obj-entity name="CaseByCase" className="org.vamdc.BasecolTest.dao.CaseByCase" dbEntityName="CaseByCase">
+		<obj-attribute name="idCase" type="java.lang.Short" db-attribute-path="idCase"/>
+		<obj-attribute name="idElement" type="java.lang.Long" db-attribute-path="idElement"/>
+		<obj-attribute name="idEnergyTable" type="java.lang.Long" db-attribute-path="idEnergyTable"/>
+	</obj-entity>
+	<obj-entity name="CollaborationGroups" className="org.vamdc.BasecolTest.dao.CollaborationGroups" dbEntityName="Collaboration_Groups">
+		<obj-attribute name="address" type="java.lang.String" db-attribute-path="address"/>
+		<obj-attribute name="idColGroup" type="java.lang.Long" db-attribute-path="idColGroup"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="website" type="java.lang.String" db-attribute-path="website"/>
+	</obj-entity>
+	<obj-entity name="Collisions" className="org.vamdc.BasecolTest.dao.Collisions" dbEntityName="Collisions">
+		<obj-attribute name="basisSet" type="java.lang.String" db-attribute-path="basisSet"/>
+		<obj-attribute name="comment" type="java.lang.String" db-attribute-path="comment"/>
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creationDate"/>
+		<obj-attribute name="idCollision" type="long" db-attribute-path="idCollision"/>
+		<obj-attribute name="isVisible" type="java.lang.Short" db-attribute-path="isVisible"/>
+		<obj-attribute name="methodComment" type="java.lang.String" db-attribute-path="methodComment"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modificationDate"/>
+		<obj-attribute name="pesComment" type="java.lang.String" db-attribute-path="pesComment"/>
+		<obj-attribute name="rangeOfEnergy" type="java.lang.String" db-attribute-path="rangeOfEnergy"/>
+		<obj-attribute name="recommended" type="java.lang.String" db-attribute-path="recommended"/>
+		<obj-attribute name="reducedMassValue" type="java.lang.Double" db-attribute-path="reducedMassValue"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+		<obj-attribute name="year" type="java.lang.Integer" db-attribute-path="year"/>
+	</obj-entity>
+	<obj-entity name="CollisionsProcessus" className="org.vamdc.BasecolTest.dao.CollisionsProcessus" dbEntityName="Collisions_Processus">
+		<obj-attribute name="idCollision" type="java.lang.Long" db-attribute-path="idCollision"/>
+		<obj-attribute name="idProcessus" type="java.lang.Short" db-attribute-path="idProcessus"/>
+	</obj-entity>
+	<obj-entity name="CollisionsScientists" className="org.vamdc.BasecolTest.dao.CollisionsScientists" dbEntityName="Collisions_Scientists">
+		<obj-attribute name="idCollision" type="java.lang.Long" db-attribute-path="idCollision"/>
+		<obj-attribute name="idScientist" type="java.lang.Long" db-attribute-path="idScientist"/>
+		<obj-attribute name="rank" type="java.lang.Integer" db-attribute-path="rank"/>
+	</obj-entity>
+	<obj-entity name="Contributors" className="org.vamdc.BasecolTest.dao.Contributors" dbEntityName="Contributors">
+		<obj-attribute name="firstName" type="java.lang.String" db-attribute-path="firstName"/>
+		<obj-attribute name="idContributor" type="java.lang.Long" db-attribute-path="idContributor"/>
+		<obj-attribute name="lastName" type="java.lang.String" db-attribute-path="lastName"/>
+		<obj-attribute name="mail" type="java.lang.String" db-attribute-path="mail"/>
+	</obj-entity>
+	<obj-entity name="ElementTypes" className="org.vamdc.BasecolTest.dao.ElementTypes" dbEntityName="ElementTypes">
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idElementType" type="java.lang.Short" db-attribute-path="idElementType"/>
+	</obj-entity>
+	<obj-entity name="Elements" className="org.vamdc.BasecolTest.dao.Elements" dbEntityName="Elements">
+		<obj-attribute name="charge" type="java.lang.Short" db-attribute-path="charge"/>
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idElement" type="java.lang.Long" db-attribute-path="idElement"/>
+		<obj-attribute name="idElementType" type="java.lang.Byte" db-attribute-path="idElementType"/>
+		<obj-attribute name="inchi" type="java.lang.String" db-attribute-path="inchi"/>
+		<obj-attribute name="inchiKey" type="java.lang.String" db-attribute-path="inchi_key"/>
+		<obj-attribute name="latex" type="java.lang.String" db-attribute-path="latex"/>
+		<obj-attribute name="molecularConstant" type="java.lang.Double" db-attribute-path="molecularConstant"/>
+		<obj-attribute name="molecularMass" type="java.lang.Double" db-attribute-path="molecularMass"/>
+		<obj-attribute name="stoichiometricFormula" type="java.lang.String" db-attribute-path="stoichiometricFormula"/>
+		<obj-attribute name="typeOfMolecule" type="java.lang.String" db-attribute-path="typeOfMolecule"/>
+	</obj-entity>
+	<obj-entity name="EnergyTables" className="org.vamdc.BasecolTest.dao.EnergyTables" dbEntityName="EnergyTables">
+		<obj-attribute name="comment" type="java.lang.String" db-attribute-path="comment"/>
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creationDate"/>
+		<obj-attribute name="electronicComponentDescription" type="java.lang.String" db-attribute-path="electronicComponentDescription"/>
+		<obj-attribute name="energyOrigin" type="java.lang.String" db-attribute-path="energyOrigin"/>
+		<obj-attribute name="exp" type="java.lang.String" db-attribute-path="exp"/>
+		<obj-attribute name="idEnergyTable" type="java.lang.Long" db-attribute-path="idEnergyTable"/>
+		<obj-attribute name="isVisible" type="java.lang.Short" db-attribute-path="isVisible"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modificationDate"/>
+		<obj-attribute name="termSymbol" type="java.lang.String" db-attribute-path="termSymbol"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+		<obj-attribute name="totalMolecularProjectionL" type="java.lang.Double" db-attribute-path="totalMolecularProjectionL"/>
+		<obj-attribute name="totalSpinMomentumS" type="java.lang.Double" db-attribute-path="totalSpinMomentumS"/>
+		<obj-attribute name="vibrationalComponentDescription" type="java.lang.String" db-attribute-path="vibrationalComponentDescription"/>
+	</obj-entity>
+	<obj-entity name="EnergyTablesLevels" className="org.vamdc.BasecolTest.dao.EnergyTablesLevels" dbEntityName="EnergyTables_Levels">
+		<obj-attribute name="degeneracy" type="java.lang.Integer" db-attribute-path="degeneracy"/>
+		<obj-attribute name="energy" type="java.lang.Double" db-attribute-path="energy"/>
+		<obj-attribute name="idLevel" type="java.lang.Long" db-attribute-path="idLevel"/>
+		<obj-attribute name="level" type="java.lang.Short" db-attribute-path="level"/>
+	</obj-entity>
+	<obj-entity name="EnergyTablesLevelsQuantumNumbers" className="org.vamdc.BasecolTest.dao.EnergyTablesLevelsQuantumNumbers" dbEntityName="EnergyTables_Levels_QuantumNumbers">
+		<obj-attribute name="idLevel" type="java.lang.Long" db-attribute-path="idLevel"/>
+		<obj-attribute name="idQuantumNumber" type="java.lang.Long" db-attribute-path="idQuantumNumber"/>
+		<obj-attribute name="stringValue" type="java.lang.String" db-attribute-path="stringValue"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="EnergyTablesProcessus" className="org.vamdc.BasecolTest.dao.EnergyTablesProcessus" dbEntityName="EnergyTables_Processus">
+		<obj-attribute name="idEnergyTable" type="java.lang.Long" db-attribute-path="idEnergyTable"/>
+		<obj-attribute name="idProcessus" type="java.lang.Short" db-attribute-path="idProcessus"/>
+	</obj-entity>
+	<obj-entity name="EnergyTablesQuantumNumbers" className="org.vamdc.BasecolTest.dao.EnergyTablesQuantumNumbers" dbEntityName="EnergyTables_QuantumNumbers">
+		<obj-attribute name="idEnergyTable" type="java.lang.Long" db-attribute-path="idEnergyTable"/>
+		<obj-attribute name="idQuantumNumber" type="java.lang.Long" db-attribute-path="idQuantumNumber"/>
+		<obj-attribute name="position" type="java.lang.Short" db-attribute-path="position"/>
+	</obj-entity>
+	<obj-entity name="FitEquations" className="org.vamdc.BasecolTest.dao.FitEquations" dbEntityName="FitEquations">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idFitEquation" type="java.lang.Short" db-attribute-path="idFitEquation"/>
+		<obj-attribute name="processing" type="java.lang.String" db-attribute-path="processing"/>
+	</obj-entity>
+	<obj-entity name="FitValues" className="org.vamdc.BasecolTest.dao.FitValues" dbEntityName="FitValues">
+		<obj-attribute name="coefficient" type="java.lang.String" db-attribute-path="coefficient"/>
+		<obj-attribute name="idFit" type="java.lang.Long" db-attribute-path="idFit"/>
+		<obj-attribute name="idLevelGroup" type="java.lang.Long" db-attribute-path="idLevelGroup"/>
+		<obj-attribute name="position" type="java.lang.Integer" db-attribute-path="position"/>
+		<obj-attribute name="value" type="java.lang.Double" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="Fits" className="org.vamdc.BasecolTest.dao.Fits" dbEntityName="Fits">
+		<obj-attribute name="idFit" type="java.lang.Long" db-attribute-path="idFit"/>
+		<obj-attribute name="precis" type="java.lang.String" db-attribute-path="precis"/>
+		<obj-attribute name="text" type="java.lang.String" db-attribute-path="text"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+	</obj-entity>
+	<obj-entity name="ForeignValues" className="org.vamdc.BasecolTest.dao.ForeignValues" dbEntityName="ForeignValues">
+		<obj-attribute name="einsteinCoefficient" type="java.lang.Double" db-attribute-path="einsteinCoefficient"/>
+		<obj-attribute name="finalLevelOf" type="java.lang.Long" db-attribute-path="finalLevelOf"/>
+		<obj-attribute name="frequency" type="java.math.BigDecimal" db-attribute-path="frequency"/>
+		<obj-attribute name="gUp" type="java.lang.Short" db-attribute-path="gUp"/>
+		<obj-attribute name="idForeignValuesSet" type="java.lang.Short" db-attribute-path="idForeignValuesSet"/>
+		<obj-attribute name="initialLevelOf" type="java.lang.Long" db-attribute-path="initialLevelOf"/>
+		<obj-attribute name="uncertainty" type="java.math.BigDecimal" db-attribute-path="uncertainty"/>
+	</obj-entity>
+	<obj-entity name="ForeignValuesSets" className="org.vamdc.BasecolTest.dao.ForeignValuesSets" dbEntityName="ForeignValuesSets">
+		<obj-attribute name="idForeignValuesSet" type="java.lang.Short" db-attribute-path="idForeignValuesSet"/>
+	</obj-entity>
+	<obj-entity name="ForeignValuesSetsCollisions" className="org.vamdc.BasecolTest.dao.ForeignValuesSetsCollisions" dbEntityName="ForeignValuesSets_Collisions">
+		<obj-attribute name="idCollision" type="java.lang.Long" db-attribute-path="idCollision"/>
+		<obj-attribute name="idForeignValuesSet" type="java.lang.Short" db-attribute-path="idForeignValuesSet"/>
+	</obj-entity>
+	<obj-entity name="HyperfineQNums" className="org.vamdc.BasecolTest.dao.HyperfineQNums" dbEntityName="Hyperfine_QNums">
+		<obj-attribute name="idMolNucleus" type="java.lang.Integer" db-attribute-path="idMolAtom"/>
+		<obj-attribute name="idQNumber" type="java.lang.Long" db-attribute-path="idQNumber"/>
+		<obj-attribute name="idRecord" type="java.lang.Long" db-attribute-path="idRecord"/>
+		<obj-attribute name="idRefQNumber" type="java.lang.Long" db-attribute-path="idRefQNumber"/>
+	</obj-entity>
+	<obj-entity name="LevelGroups" className="org.vamdc.BasecolTest.dao.LevelGroups" dbEntityName="LevelGroups">
+		<obj-attribute name="idLevelGroup" type="java.lang.Long" db-attribute-path="idLevelGroup"/>
+	</obj-entity>
+	<obj-entity name="MatchedEnergyTables" className="org.vamdc.BasecolTest.dao.MatchedEnergyTables" dbEntityName="MatchedEnergyTables">
+		<obj-attribute name="idMatchedEnergyTable" type="java.lang.Short" db-attribute-path="idMatchedEnergyTable"/>
+	</obj-entity>
+	<obj-entity name="MatchedEnergyTablesCollisions" className="org.vamdc.BasecolTest.dao.MatchedEnergyTablesCollisions" dbEntityName="MatchedEnergyTables_Collisions">
+		<obj-attribute name="idCollision" type="java.lang.Long" db-attribute-path="idCollision"/>
+		<obj-attribute name="idMatchedEnergyTable" type="java.lang.Short" db-attribute-path="idMatchedEnergyTable"/>
+	</obj-entity>
+	<obj-entity name="MatchedEnergyTablesLevels" className="org.vamdc.BasecolTest.dao.MatchedEnergyTablesLevels" dbEntityName="MatchedEnergyTables_Levels">
+		<obj-attribute name="degeneracy" type="java.lang.Integer" db-attribute-path="degeneracy"/>
+		<obj-attribute name="energy" type="java.lang.Double" db-attribute-path="energy"/>
+		<obj-attribute name="idMatchedLevel" type="java.lang.Integer" db-attribute-path="idMatchedLevel"/>
+	</obj-entity>
+	<obj-entity name="Members" className="org.vamdc.BasecolTest.dao.Members" dbEntityName="Members">
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="firstname" type="java.lang.String" db-attribute-path="firstname"/>
+		<obj-attribute name="function" type="java.lang.String" db-attribute-path="function"/>
+		<obj-attribute name="idMember" type="java.lang.Long" db-attribute-path="idMember"/>
+		<obj-attribute name="site" type="java.lang.String" db-attribute-path="site"/>
+		<obj-attribute name="surname" type="java.lang.String" db-attribute-path="surname"/>
+		<obj-attribute name="telephone" type="java.lang.String" db-attribute-path="telephone"/>
+	</obj-entity>
+	<obj-entity name="MoleculeAtoms" className="org.vamdc.BasecolTest.dao.MoleculeAtoms" dbEntityName="MoleculeAtoms">
+		<obj-attribute name="atomCharge" type="java.lang.Short" db-attribute-path="atom_charge"/>
+		<obj-attribute name="atomCount" type="java.lang.Short" db-attribute-path="atom_count"/>
+		<obj-attribute name="atomId" type="java.lang.Integer" db-attribute-path="atom_id"/>
+		<obj-attribute name="hydrogenCount" type="java.lang.Short" db-attribute-path="hydrogen_count"/>
+	</obj-entity>
+	<obj-entity name="MoleculeBonds" className="org.vamdc.BasecolTest.dao.MoleculeBonds" dbEntityName="MoleculeBonds">
+		<obj-attribute name="bondId" type="java.lang.Integer" db-attribute-path="bond_id"/>
+		<obj-attribute name="bondOrder" type="java.lang.String" db-attribute-path="bond_order"/>
+	</obj-entity>
+	<obj-entity name="Nuclei" className="org.vamdc.BasecolTest.dao.Nuclei" dbEntityName="Nuclei">
+		<obj-attribute name="isotope" type="java.lang.Integer" db-attribute-path="isotope"/>
+		<obj-attribute name="mostAbundant" type="java.lang.Boolean" db-attribute-path="most_abundant"/>
+		<obj-attribute name="nuclearCharge" type="java.lang.Integer" db-attribute-path="nuclear_charge"/>
+		<obj-attribute name="nucleusId" type="java.lang.Integer" db-attribute-path="nucleus_id"/>
+		<obj-attribute name="spin" type="java.lang.Float" db-attribute-path="spin"/>
+		<obj-attribute name="symbol" type="java.lang.String" db-attribute-path="symbol"/>
+	</obj-entity>
+	<obj-entity name="PartitionFunctions" className="org.vamdc.BasecolTest.dao.PartitionFunctions" dbEntityName="PartitionFunctions">
+		<obj-attribute name="idPartition" type="java.lang.Long" db-attribute-path="idPartition"/>
+	</obj-entity>
+	<obj-entity name="PartitionFunctionsValues" className="org.vamdc.BasecolTest.dao.PartitionFunctionsValues" dbEntityName="PartitionFunctions_Values">
+		<obj-attribute name="idPartition" type="java.lang.Long" db-attribute-path="idPartition"/>
+		<obj-attribute name="q" type="java.lang.Double" db-attribute-path="Q"/>
+		<obj-attribute name="t" type="java.lang.Double" db-attribute-path="T"/>
+	</obj-entity>
+	<obj-entity name="Processus" className="org.vamdc.BasecolTest.dao.Processus" dbEntityName="Processus">
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idProcessus" type="java.lang.Short" db-attribute-path="idProcessus"/>
+	</obj-entity>
+	<obj-entity name="Publications" className="org.vamdc.BasecolTest.dao.Publications" dbEntityName="Publications">
+		<obj-attribute name="authors" type="java.lang.String" db-attribute-path="authors"/>
+		<obj-attribute name="idPublication" type="java.lang.Long" db-attribute-path="idPublication"/>
+		<obj-attribute name="journal" type="java.lang.String" db-attribute-path="journal"/>
+		<obj-attribute name="link" type="java.lang.String" db-attribute-path="link"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+		<obj-attribute name="type" type="java.lang.String" db-attribute-path="type"/>
+		<obj-attribute name="year" type="java.lang.Integer" db-attribute-path="year"/>
+	</obj-entity>
+	<obj-entity name="QuantumNumbers" className="org.vamdc.BasecolTest.dao.QuantumNumbers" dbEntityName="QuantumNumbers">
+		<obj-attribute name="comment" type="java.lang.String" db-attribute-path="comment"/>
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idQuantumNumber" type="java.lang.Long" db-attribute-path="idQuantumNumber"/>
+	</obj-entity>
+	<obj-entity name="RateCoefficients" className="org.vamdc.BasecolTest.dao.RateCoefficients" dbEntityName="RateCoefficients">
+		<obj-attribute name="data" type="java.lang.Double" db-attribute-path="data"/>
+		<obj-attribute name="idRate" type="java.lang.Long" db-attribute-path="idRate"/>
+		<obj-attribute name="isEffectiveRate" type="java.lang.Boolean" db-attribute-path="isEffectiveRate"/>
+		<obj-attribute name="temperature" type="java.lang.Double" db-attribute-path="temperature"/>
+	</obj-entity>
+	<obj-entity name="RefsAdsnotes" className="org.vamdc.BasecolTest.dao.RefsAdsnotes" dbEntityName="Refs_Adsnotes">
+		<obj-attribute name="idAdsnote" type="java.lang.Long" db-attribute-path="idAdsnote"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="RefsArticles" className="org.vamdc.BasecolTest.dao.RefsArticles" dbEntityName="Refs_Articles">
+		<obj-attribute name="idArticle" type="java.lang.Long" db-attribute-path="idArticle"/>
+		<obj-attribute name="issue" type="java.lang.String" db-attribute-path="issue"/>
+		<obj-attribute name="linkToData" type="java.lang.String" db-attribute-path="linkToData"/>
+		<obj-attribute name="month" type="java.lang.Short" db-attribute-path="month"/>
+		<obj-attribute name="page" type="java.lang.String" db-attribute-path="page"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+		<obj-attribute name="url" type="java.lang.String" db-attribute-path="url"/>
+		<obj-attribute name="volume" type="java.lang.String" db-attribute-path="volume"/>
+		<obj-attribute name="year" type="java.lang.Long" db-attribute-path="year"/>
+	</obj-entity>
+	<obj-entity name="RefsArticlesAuthors" className="org.vamdc.BasecolTest.dao.RefsArticlesAuthors" dbEntityName="Refs_Articles_Authors">
+		<obj-attribute name="id" type="java.lang.Long" db-attribute-path="id"/>
+	</obj-entity>
+	<obj-entity name="RefsArticlesKeywords" className="org.vamdc.BasecolTest.dao.RefsArticlesKeywords" dbEntityName="Refs_Articles_Keywords">
+	</obj-entity>
+	<obj-entity name="RefsAuthors" className="org.vamdc.BasecolTest.dao.RefsAuthors" dbEntityName="Refs_Authors">
+		<obj-attribute name="firstName" type="java.lang.String" db-attribute-path="firstName"/>
+		<obj-attribute name="idAuthor" type="java.lang.Long" db-attribute-path="idAuthor"/>
+		<obj-attribute name="surname" type="java.lang.String" db-attribute-path="surname"/>
+	</obj-entity>
+	<obj-entity name="RefsGroups" className="org.vamdc.BasecolTest.dao.RefsGroups" dbEntityName="Refs_Groups">
+		<obj-attribute name="idGroup" type="java.lang.Long" db-attribute-path="idGroup"/>
+		<obj-attribute name="idRefGroup" type="java.lang.Long" db-attribute-path="idRefGroup"/>
+		<obj-attribute name="isSource" type="java.lang.Boolean" db-attribute-path="isSource"/>
+	</obj-entity>
+	<obj-entity name="RefsJournals" className="org.vamdc.BasecolTest.dao.RefsJournals" dbEntityName="Refs_Journals">
+		<obj-attribute name="category" type="java.lang.String" db-attribute-path="category"/>
+		<obj-attribute name="idJournal" type="java.lang.Long" db-attribute-path="idJournal"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="smallName" type="java.lang.String" db-attribute-path="smallName"/>
+	</obj-entity>
+	<obj-entity name="RefsKeywords" className="org.vamdc.BasecolTest.dao.RefsKeywords" dbEntityName="Refs_Keywords">
+		<obj-attribute name="idKeyword" type="java.lang.Long" db-attribute-path="idKeyword"/>
+		<obj-attribute name="value" type="java.lang.String" db-attribute-path="value"/>
+	</obj-entity>
+	<obj-entity name="RefsKeywordsCategories" className="org.vamdc.BasecolTest.dao.RefsKeywordsCategories" dbEntityName="Refs_Keywords_Categories">
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idCategory" type="java.lang.Long" db-attribute-path="idCategory"/>
+	</obj-entity>
+	<obj-entity name="RefsMatchedData" className="org.vamdc.BasecolTest.dao.RefsMatchedData" dbEntityName="Refs_MatchedData">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creationDate"/>
+		<obj-attribute name="dateOfEntry" type="java.lang.String" db-attribute-path="dateOfEntry"/>
+		<obj-attribute name="fileName" type="java.lang.String" db-attribute-path="fileName"/>
+		<obj-attribute name="idChemicalElementSpectro" type="java.lang.Long" db-attribute-path="idChemicalElementSpectro"/>
+		<obj-attribute name="idRef" type="java.lang.Long" db-attribute-path="idRef"/>
+		<obj-attribute name="infosUrl" type="java.lang.String" db-attribute-path="infosUrl"/>
+		<obj-attribute name="version" type="java.lang.String" db-attribute-path="version"/>
+	</obj-entity>
+	<obj-entity name="Scientists" className="org.vamdc.BasecolTest.dao.Scientists" dbEntityName="Scientists">
+		<obj-attribute name="firstName" type="java.lang.String" db-attribute-path="firstName"/>
+		<obj-attribute name="idScientist" type="java.lang.Long" db-attribute-path="idScientist"/>
+		<obj-attribute name="lastName" type="java.lang.String" db-attribute-path="lastName"/>
+	</obj-entity>
+	<obj-entity name="SpectroDatabases" className="org.vamdc.BasecolTest.dao.SpectroDatabases" dbEntityName="SpectroDatabases">
+		<obj-attribute name="idSpectroDatabase" type="java.lang.Short" db-attribute-path="idSpectroDatabase"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="StatusAvailables" className="org.vamdc.BasecolTest.dao.StatusAvailables" dbEntityName="Status_Availables">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="idCollision" type="java.lang.Long" db-attribute-path="idCollision"/>
+		<obj-attribute name="status" type="java.lang.String" db-attribute-path="status"/>
+	</obj-entity>
+	<obj-entity name="StatusCurrentWorks" className="org.vamdc.BasecolTest.dao.StatusCurrentWorks" dbEntityName="Status_CurrentWorks">
+		<obj-attribute name="details" type="java.lang.String" db-attribute-path="details"/>
+		<obj-attribute name="group" type="java.lang.String" db-attribute-path="group"/>
+		<obj-attribute name="groupDetails" type="java.lang.String" db-attribute-path="groupDetails"/>
+		<obj-attribute name="idCurrentWork" type="java.lang.Long" db-attribute-path="idCurrentWork"/>
+		<obj-attribute name="temperatures" type="java.lang.String" db-attribute-path="temperatures"/>
+	</obj-entity>
+	<obj-entity name="StatusNeeds" className="org.vamdc.BasecolTest.dao.StatusNeeds" dbEntityName="Status_Needs">
+		<obj-attribute name="idNeed" type="java.lang.Long" db-attribute-path="idNeed"/>
+		<obj-attribute name="region" type="java.lang.String" db-attribute-path="region"/>
+		<obj-attribute name="regionDetails" type="java.lang.String" db-attribute-path="regionDetails"/>
+		<obj-attribute name="temperatures" type="java.lang.String" db-attribute-path="temperatures"/>
+	</obj-entity>
+	<obj-entity name="Symmetries" className="org.vamdc.BasecolTest.dao.Symmetries" dbEntityName="Symmetries">
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idSymmetry" type="java.lang.Short" db-attribute-path="idSymmetry"/>
+	</obj-entity>
+	<obj-entity name="Units" className="org.vamdc.BasecolTest.dao.Units" dbEntityName="Units">
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="idUnit" type="java.lang.Long" db-attribute-path="idUnit"/>
+		<obj-attribute name="latex" type="java.lang.String" db-attribute-path="latex"/>
+		<obj-attribute name="xsamsUnit" type="java.lang.String" db-attribute-path="xsamsUnit"/>
+	</obj-entity>
+	<obj-entity name="Versions" className="org.vamdc.BasecolTest.dao.Versions" dbEntityName="Versions">
+		<obj-attribute name="comment" type="java.lang.String" db-attribute-path="comment"/>
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creationDate"/>
+		<obj-attribute name="idVersion" type="java.lang.Long" db-attribute-path="idVersion"/>
+		<obj-attribute name="idVersionedElement" type="java.lang.Long" db-attribute-path="idVersionedElement"/>
+		<obj-attribute name="versionNumber" type="java.lang.Short" db-attribute-path="versionNumber"/>
+		<obj-attribute name="versionType" type="java.lang.String" db-attribute-path="versionType"/>
+	</obj-entity>
+	<db-relationship name="toElements" source="CaseByCase" target="Elements" toMany="false">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTables" source="CaseByCase" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idElement" target="idElement"/>
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="memberss" source="Collaboration_Groups" target="Members" toMany="true">
+		<db-attribute-pair source="idColGroup" target="idColGroup"/>
+	</db-relationship>
+	<db-relationship name="Refs_Groups_ARRAY" source="Collisions" target="Refs_Groups" toMany="false">
+		<db-attribute-pair source="idRefGroup" target="idGroup"/>
+	</db-relationship>
+	<db-relationship name="Refs_Groups_Method" source="Collisions" target="Refs_Groups" toMany="false">
+		<db-attribute-pair source="methodIdRefGroup" target="idGroup"/>
+	</db-relationship>
+	<db-relationship name="Refs_Groups_PES" source="Collisions" target="Refs_Groups" toMany="false">
+		<db-attribute-pair source="pesIdRefGroup" target="idGroup"/>
+	</db-relationship>
+	<db-relationship name="Refs_Groups_RedMass" source="Collisions" target="Refs_Groups" toMany="false">
+		<db-attribute-pair source="reducedMassIdRefGroup" target="idGroup"/>
+	</db-relationship>
+	<db-relationship name="collisionsProcessuses" source="Collisions" target="Collisions_Processus" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="collisionsScientistss" source="Collisions" target="Collisions_Scientists" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="fitss" source="Collisions" target="Fits" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="foreignvaluessetsCollisionss" source="Collisions" target="ForeignValuesSets_Collisions" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="levelgroupss" source="Collisions" target="LevelGroups" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="matchedenergytablesCollisionss" source="Collisions" target="MatchedEnergyTables_Collisions" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="ratecoefficientss" source="Collisions" target="RateCoefficients" toMany="true">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="Collisions" target="Status_Availables" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toContributors" source="Collisions" target="Contributors" toMany="false">
+		<db-attribute-pair source="idContributor" target="idContributor"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTablesOf" source="Collisions" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTableOf" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTablesWith" source="Collisions" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTableWith" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toUnits" source="Collisions" target="Units" toMany="false">
+		<db-attribute-pair source="reducedMassUnit" target="idUnit"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="Collisions_Processus" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toProcessus" source="Collisions_Processus" target="Processus" toMany="false">
+		<db-attribute-pair source="idProcessus" target="idProcessus"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="Collisions_Scientists" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toScientists" source="Collisions_Scientists" target="Scientists" toMany="false">
+		<db-attribute-pair source="idScientist" target="idScientist"/>
+	</db-relationship>
+	<db-relationship name="collisionss" source="Contributors" target="Collisions" toMany="true">
+		<db-attribute-pair source="idContributor" target="idContributor"/>
+	</db-relationship>
+	<db-relationship name="elementss" source="ElementTypes" target="Elements" toMany="true">
+		<db-attribute-pair source="idElementType" target="idElementType"/>
+	</db-relationship>
+	<db-relationship name="casebycases" source="Elements" target="CaseByCase" toMany="true">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="energytableses" source="Elements" target="EnergyTables" toMany="true">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="moleculeatomss" source="Elements" target="MoleculeAtoms" toMany="true">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="moleculebondss" source="Elements" target="MoleculeBonds" toMany="true">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="partitionfunctionss" source="Elements" target="PartitionFunctions" toMany="true">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="statusCurrentworkss" source="Elements" target="Status_CurrentWorks" toMany="true">
+		<db-attribute-pair source="idElement" target="idElementOf"/>
+	</db-relationship>
+	<db-relationship name="statusCurrentworkss1" source="Elements" target="Status_CurrentWorks" toMany="true">
+		<db-attribute-pair source="idElement" target="idElementWith"/>
+	</db-relationship>
+	<db-relationship name="statusNeedss" source="Elements" target="Status_Needs" toMany="true">
+		<db-attribute-pair source="idElement" target="idElementOf"/>
+	</db-relationship>
+	<db-relationship name="statusNeedss1" source="Elements" target="Status_Needs" toMany="true">
+		<db-attribute-pair source="idElement" target="idElementWith"/>
+	</db-relationship>
+	<db-relationship name="toElementTypes" source="Elements" target="ElementTypes" toMany="false">
+		<db-attribute-pair source="idElementType" target="idElementType"/>
+	</db-relationship>
+	<db-relationship name="casebycases" source="EnergyTables" target="CaseByCase" toMany="true">
+		<db-attribute-pair source="idElement" target="idElement"/>
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="collisionssOf" source="EnergyTables" target="Collisions" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTableOf"/>
+	</db-relationship>
+	<db-relationship name="collisionssWith" source="EnergyTables" target="Collisions" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTableWith"/>
+	</db-relationship>
+	<db-relationship name="energytablesLevelss" source="EnergyTables" target="EnergyTables_Levels" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="energytablesProcessuses" source="EnergyTables" target="EnergyTables_Processus" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="energytablesQuantumnumberss" source="EnergyTables" target="EnergyTables_QuantumNumbers" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="hyperfineQnumss" source="EnergyTables" target="Hyperfine_QNums" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="matchedenergytableses" source="EnergyTables" target="MatchedEnergyTables" toMany="true">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toElements" source="EnergyTables" target="Elements" toMany="false">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toRefsGroups" source="EnergyTables" target="Refs_Groups" toMany="false">
+		<db-attribute-pair source="idRefGroup" target="idGroup"/>
+	</db-relationship>
+	<db-relationship name="toSymmetries" source="EnergyTables" target="Symmetries" toMany="false">
+		<db-attribute-pair source="idSymmetry" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="toUnits" source="EnergyTables" target="Units" toMany="false">
+		<db-attribute-pair source="energyUnit" target="idUnit"/>
+	</db-relationship>
+	<db-relationship name="energytablesLevelsQuantumnumberss" source="EnergyTables_Levels" target="EnergyTables_Levels_QuantumNumbers" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idLevel" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="foreignvalueses" source="EnergyTables_Levels" target="ForeignValues" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idLevel" target="finalLevelOf"/>
+	</db-relationship>
+	<db-relationship name="foreignvalueses1" source="EnergyTables_Levels" target="ForeignValues" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idLevel" target="initialLevelOf"/>
+	</db-relationship>
+	<db-relationship name="levelgroupss" source="EnergyTables_Levels" target="LevelGroups" toMany="true">
+		<db-attribute-pair source="idLevel" target="finalLevelOf"/>
+	</db-relationship>
+	<db-relationship name="levelgroupss1" source="EnergyTables_Levels" target="LevelGroups" toMany="true">
+		<db-attribute-pair source="idLevel" target="finalLevelWith"/>
+	</db-relationship>
+	<db-relationship name="levelgroupss2" source="EnergyTables_Levels" target="LevelGroups" toMany="true">
+		<db-attribute-pair source="idLevel" target="initialLevelOf"/>
+	</db-relationship>
+	<db-relationship name="levelgroupss3" source="EnergyTables_Levels" target="LevelGroups" toMany="true">
+		<db-attribute-pair source="idLevel" target="initialLevelWith"/>
+	</db-relationship>
+	<db-relationship name="matchedenergytablesLevelss" source="EnergyTables_Levels" target="MatchedEnergyTables_Levels" toMany="true">
+		<db-attribute-pair source="idLevel" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTables" source="EnergyTables_Levels" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTablesLevels" source="EnergyTables_Levels_QuantumNumbers" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="idLevel" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toQuantumNumbers" source="EnergyTables_Levels_QuantumNumbers" target="QuantumNumbers" toMany="false">
+		<db-attribute-pair source="idQuantumNumber" target="idQuantumNumber"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTables" source="EnergyTables_Processus" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toProcessus" source="EnergyTables_Processus" target="Processus" toMany="false">
+		<db-attribute-pair source="idProcessus" target="idProcessus"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTables" source="EnergyTables_QuantumNumbers" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toQuantumNumbers" source="EnergyTables_QuantumNumbers" target="QuantumNumbers" toMany="false">
+		<db-attribute-pair source="idQuantumNumber" target="idQuantumNumber"/>
+	</db-relationship>
+	<db-relationship name="fitss" source="FitEquations" target="Fits" toMany="true">
+		<db-attribute-pair source="idFitEquation" target="idFitEquation"/>
+	</db-relationship>
+	<db-relationship name="toFits" source="FitValues" target="Fits" toMany="false">
+		<db-attribute-pair source="idFit" target="idFit"/>
+	</db-relationship>
+	<db-relationship name="toLevelGroups" source="FitValues" target="LevelGroups" toMany="false">
+		<db-attribute-pair source="idLevelGroup" target="idLevelGroup"/>
+	</db-relationship>
+	<db-relationship name="fitvalueses" source="Fits" target="FitValues" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idFit" target="idFit"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="Fits" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toFitEquations" source="Fits" target="FitEquations" toMany="false">
+		<db-attribute-pair source="idFitEquation" target="idFitEquation"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTablesLevels" source="ForeignValues" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="finalLevelOf" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTablesLevels1" source="ForeignValues" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="initialLevelOf" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toForeignValuesSets" source="ForeignValues" target="ForeignValuesSets" toMany="false">
+		<db-attribute-pair source="idForeignValuesSet" target="idForeignValuesSet"/>
+	</db-relationship>
+	<db-relationship name="foreignvalueses" source="ForeignValuesSets" target="ForeignValues" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idForeignValuesSet" target="idForeignValuesSet"/>
+	</db-relationship>
+	<db-relationship name="foreignvaluessetsCollisionss" source="ForeignValuesSets" target="ForeignValuesSets_Collisions" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idForeignValuesSet" target="idForeignValuesSet"/>
+	</db-relationship>
+	<db-relationship name="toRefsMatchedData" source="ForeignValuesSets" target="Refs_MatchedData" toMany="false">
+		<db-attribute-pair source="idRef" target="idRef"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="ForeignValuesSets_Collisions" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toForeignValuesSets" source="ForeignValuesSets_Collisions" target="ForeignValuesSets" toMany="false">
+		<db-attribute-pair source="idForeignValuesSet" target="idForeignValuesSet"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTables" source="Hyperfine_QNums" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toMoleculeAtoms" source="Hyperfine_QNums" target="MoleculeAtoms" toMany="false">
+		<db-attribute-pair source="idMolAtom" target="atom_id"/>
+	</db-relationship>
+	<db-relationship name="toQuantumNumbers" source="Hyperfine_QNums" target="QuantumNumbers" toMany="false">
+		<db-attribute-pair source="idQNumber" target="idQuantumNumber"/>
+	</db-relationship>
+	<db-relationship name="toQuantumNumbers1" source="Hyperfine_QNums" target="QuantumNumbers" toMany="false">
+		<db-attribute-pair source="idRefQNumber" target="idQuantumNumber"/>
+	</db-relationship>
+	<db-relationship name="fitvalueses" source="LevelGroups" target="FitValues" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idLevelGroup" target="idLevelGroup"/>
+	</db-relationship>
+	<db-relationship name="ratecoefficientss" source="LevelGroups" target="RateCoefficients" toMany="true">
+		<db-attribute-pair source="idLevelGroup" target="idLevelGroup"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="LevelGroups" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toETLFinalOf" source="LevelGroups" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="finalLevelOf" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toETLFinalWith" source="LevelGroups" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="finalLevelWith" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toETLInitOf" source="LevelGroups" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="initialLevelOf" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toETLInitWith" source="LevelGroups" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="initialLevelWith" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="matchedenergytablesCollisionss" source="MatchedEnergyTables" target="MatchedEnergyTables_Collisions" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idMatchedEnergyTable" target="idMatchedEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="matchedenergytablesLevelss" source="MatchedEnergyTables" target="MatchedEnergyTables_Levels" toMany="true">
+		<db-attribute-pair source="idMatchedEnergyTable" target="idMatchedEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTables" source="MatchedEnergyTables" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idEnergyTable" target="idEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toRefsMatchedData" source="MatchedEnergyTables" target="Refs_MatchedData" toMany="false">
+		<db-attribute-pair source="idRef" target="idRef"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="MatchedEnergyTables_Collisions" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toMatchedEnergyTables" source="MatchedEnergyTables_Collisions" target="MatchedEnergyTables" toMany="false">
+		<db-attribute-pair source="idMatchedEnergyTable" target="idMatchedEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toEnergyTablesLevels" source="MatchedEnergyTables_Levels" target="EnergyTables_Levels" toMany="false">
+		<db-attribute-pair source="idLevel" target="idLevel"/>
+	</db-relationship>
+	<db-relationship name="toMatchedEnergyTables" source="MatchedEnergyTables_Levels" target="MatchedEnergyTables" toMany="false">
+		<db-attribute-pair source="idMatchedEnergyTable" target="idMatchedEnergyTable"/>
+	</db-relationship>
+	<db-relationship name="toCollaborationGroups" source="Members" target="Collaboration_Groups" toMany="false">
+		<db-attribute-pair source="idColGroup" target="idColGroup"/>
+	</db-relationship>
+	<db-relationship name="hyperfineQnumss" source="MoleculeAtoms" target="Hyperfine_QNums" toMany="true">
+		<db-attribute-pair source="atom_id" target="idMolAtom"/>
+	</db-relationship>
+	<db-relationship name="moleculebondss" source="MoleculeAtoms" target="MoleculeBonds" toMany="true">
+		<db-attribute-pair source="atom_id" target="atom_1_id"/>
+	</db-relationship>
+	<db-relationship name="moleculebondss1" source="MoleculeAtoms" target="MoleculeBonds" toMany="true">
+		<db-attribute-pair source="atom_id" target="atom_2_id"/>
+	</db-relationship>
+	<db-relationship name="nucleus" source="MoleculeAtoms" target="Nuclei" toMany="false">
+		<db-attribute-pair source="nucleus_id" target="nucleus_id"/>
+	</db-relationship>
+	<db-relationship name="toElements" source="MoleculeAtoms" target="Elements" toMany="false">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="atom1" source="MoleculeBonds" target="MoleculeAtoms" toMany="false">
+		<db-attribute-pair source="atom_1_id" target="atom_id"/>
+	</db-relationship>
+	<db-relationship name="atom2" source="MoleculeBonds" target="MoleculeAtoms" toMany="false">
+		<db-attribute-pair source="atom_2_id" target="atom_id"/>
+	</db-relationship>
+	<db-relationship name="toElements" source="MoleculeBonds" target="Elements" toMany="false">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="moleculeatomss" source="Nuclei" target="MoleculeAtoms" toMany="true">
+		<db-attribute-pair source="nucleus_id" target="nucleus_id"/>
+	</db-relationship>
+	<db-relationship name="partitionfunctionsValueses" source="PartitionFunctions" target="PartitionFunctions_Values" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idPartition" target="idPartition"/>
+	</db-relationship>
+	<db-relationship name="toElements" source="PartitionFunctions" target="Elements" toMany="false">
+		<db-attribute-pair source="idElement" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toRefsGroups" source="PartitionFunctions" target="Refs_Groups" toMany="false">
+		<db-attribute-pair source="idRefGroup" target="idGroup"/>
+	</db-relationship>
+	<db-relationship name="toSymmetries" source="PartitionFunctions" target="Symmetries" toMany="false">
+		<db-attribute-pair source="idSymmetry" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="toPartitionFunctions" source="PartitionFunctions_Values" target="PartitionFunctions" toMany="false">
+		<db-attribute-pair source="idPartition" target="idPartition"/>
+	</db-relationship>
+	<db-relationship name="collisionsProcessuses" source="Processus" target="Collisions_Processus" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idProcessus" target="idProcessus"/>
+	</db-relationship>
+	<db-relationship name="energytablesProcessuses" source="Processus" target="EnergyTables_Processus" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idProcessus" target="idProcessus"/>
+	</db-relationship>
+	<db-relationship name="energytablesLevelsQuantumnumberss" source="QuantumNumbers" target="EnergyTables_Levels_QuantumNumbers" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idQuantumNumber" target="idQuantumNumber"/>
+	</db-relationship>
+	<db-relationship name="energytablesQuantumnumberss" source="QuantumNumbers" target="EnergyTables_QuantumNumbers" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idQuantumNumber" target="idQuantumNumber"/>
+	</db-relationship>
+	<db-relationship name="hyperfineQnumss" source="QuantumNumbers" target="Hyperfine_QNums" toMany="true">
+		<db-attribute-pair source="idQuantumNumber" target="idQNumber"/>
+	</db-relationship>
+	<db-relationship name="hyperfineQnumss1" source="QuantumNumbers" target="Hyperfine_QNums" toMany="true">
+		<db-attribute-pair source="idQuantumNumber" target="idRefQNumber"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="RateCoefficients" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toLevelGroups" source="RateCoefficients" target="LevelGroups" toMany="false">
+		<db-attribute-pair source="idLevelGroup" target="idLevelGroup"/>
+	</db-relationship>
+	<db-relationship name="refsArticleses" source="Refs_Adsnotes" target="Refs_Articles" toMany="true">
+		<db-attribute-pair source="idAdsnote" target="idAdsnote"/>
+	</db-relationship>
+	<db-relationship name="refsArticlesAuthorss" source="Refs_Articles" target="Refs_Articles_Authors" toMany="true">
+		<db-attribute-pair source="idArticle" target="idArticle"/>
+	</db-relationship>
+	<db-relationship name="refsArticlesKeywordss" source="Refs_Articles" target="Refs_Articles_Keywords" toMany="true">
+		<db-attribute-pair source="idArticle" target="idArticle"/>
+	</db-relationship>
+	<db-relationship name="refsGroupss" source="Refs_Articles" target="Refs_Groups" toMany="true">
+		<db-attribute-pair source="idArticle" target="idArticle"/>
+	</db-relationship>
+	<db-relationship name="toRefsAdsnotes" source="Refs_Articles" target="Refs_Adsnotes" toMany="false">
+		<db-attribute-pair source="idAdsnote" target="idAdsnote"/>
+	</db-relationship>
+	<db-relationship name="toRefsJournals" source="Refs_Articles" target="Refs_Journals" toMany="false">
+		<db-attribute-pair source="idJournal" target="idJournal"/>
+	</db-relationship>
+	<db-relationship name="toRefsArticles" source="Refs_Articles_Authors" target="Refs_Articles" toMany="false">
+		<db-attribute-pair source="idArticle" target="idArticle"/>
+	</db-relationship>
+	<db-relationship name="toRefsAuthors" source="Refs_Articles_Authors" target="Refs_Authors" toMany="false">
+		<db-attribute-pair source="idAuthor" target="idAuthor"/>
+	</db-relationship>
+	<db-relationship name="toRefsArticles" source="Refs_Articles_Keywords" target="Refs_Articles" toMany="false">
+		<db-attribute-pair source="idArticle" target="idArticle"/>
+	</db-relationship>
+	<db-relationship name="toRefsKeywords" source="Refs_Articles_Keywords" target="Refs_Keywords" toMany="false">
+		<db-attribute-pair source="idKeyword" target="idKeyword"/>
+	</db-relationship>
+	<db-relationship name="refsArticlesAuthorss" source="Refs_Authors" target="Refs_Articles_Authors" toMany="true">
+		<db-attribute-pair source="idAuthor" target="idAuthor"/>
+	</db-relationship>
+	<db-relationship name="collisionss" source="Refs_Groups" target="Collisions" toMany="true">
+		<db-attribute-pair source="idGroup" target="idRefGroup"/>
+	</db-relationship>
+	<db-relationship name="collisionss1" source="Refs_Groups" target="Collisions" toMany="true">
+		<db-attribute-pair source="idGroup" target="methodIdRefGroup"/>
+	</db-relationship>
+	<db-relationship name="collisionss2" source="Refs_Groups" target="Collisions" toMany="true">
+		<db-attribute-pair source="idGroup" target="pesIdRefGroup"/>
+	</db-relationship>
+	<db-relationship name="collisionss3" source="Refs_Groups" target="Collisions" toMany="true">
+		<db-attribute-pair source="idGroup" target="reducedMassIdRefGroup"/>
+	</db-relationship>
+	<db-relationship name="energytableses" source="Refs_Groups" target="EnergyTables" toMany="true">
+		<db-attribute-pair source="idGroup" target="idRefGroup"/>
+	</db-relationship>
+	<db-relationship name="partitionfunctionss" source="Refs_Groups" target="PartitionFunctions" toMany="true">
+		<db-attribute-pair source="idGroup" target="idRefGroup"/>
+	</db-relationship>
+	<db-relationship name="toRefsArticles" source="Refs_Groups" target="Refs_Articles" toMany="false">
+		<db-attribute-pair source="idArticle" target="idArticle"/>
+	</db-relationship>
+	<db-relationship name="untitledRel" source="Refs_Groups" target="EnergyTables" toMany="false">
+		<db-attribute-pair source="idRefGroup" target="idRefGroup"/>
+	</db-relationship>
+	<db-relationship name="refsArticleses" source="Refs_Journals" target="Refs_Articles" toMany="true">
+		<db-attribute-pair source="idJournal" target="idJournal"/>
+	</db-relationship>
+	<db-relationship name="refsArticlesKeywordss" source="Refs_Keywords" target="Refs_Articles_Keywords" toMany="true">
+		<db-attribute-pair source="idKeyword" target="idKeyword"/>
+	</db-relationship>
+	<db-relationship name="toRefsKeywordsCategories" source="Refs_Keywords" target="Refs_Keywords_Categories" toMany="false">
+		<db-attribute-pair source="idCategory" target="idCategory"/>
+	</db-relationship>
+	<db-relationship name="refsKeywordss" source="Refs_Keywords_Categories" target="Refs_Keywords" toMany="true">
+		<db-attribute-pair source="idCategory" target="idCategory"/>
+	</db-relationship>
+	<db-relationship name="foreignvaluessetss" source="Refs_MatchedData" target="ForeignValuesSets" toMany="true">
+		<db-attribute-pair source="idRef" target="idRef"/>
+	</db-relationship>
+	<db-relationship name="matchedenergytableses" source="Refs_MatchedData" target="MatchedEnergyTables" toMany="true">
+		<db-attribute-pair source="idRef" target="idRef"/>
+	</db-relationship>
+	<db-relationship name="toSpectroDatabases" source="Refs_MatchedData" target="SpectroDatabases" toMany="false">
+		<db-attribute-pair source="idSpectroDatabase" target="idSpectroDatabase"/>
+	</db-relationship>
+	<db-relationship name="collisionsScientistss" source="Scientists" target="Collisions_Scientists" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="idScientist" target="idScientist"/>
+	</db-relationship>
+	<db-relationship name="refsMatcheddatas" source="SpectroDatabases" target="Refs_MatchedData" toMany="true">
+		<db-attribute-pair source="idSpectroDatabase" target="idSpectroDatabase"/>
+	</db-relationship>
+	<db-relationship name="toCollisions" source="Status_Availables" target="Collisions" toMany="false">
+		<db-attribute-pair source="idCollision" target="idCollision"/>
+	</db-relationship>
+	<db-relationship name="toElements" source="Status_CurrentWorks" target="Elements" toMany="false">
+		<db-attribute-pair source="idElementOf" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toElements1" source="Status_CurrentWorks" target="Elements" toMany="false">
+		<db-attribute-pair source="idElementWith" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toSymmetries" source="Status_CurrentWorks" target="Symmetries" toMany="false">
+		<db-attribute-pair source="idSymmetryOf" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="toSymmetries1" source="Status_CurrentWorks" target="Symmetries" toMany="false">
+		<db-attribute-pair source="idSymmetryWith" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="toElements" source="Status_Needs" target="Elements" toMany="false">
+		<db-attribute-pair source="idElementOf" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toElements1" source="Status_Needs" target="Elements" toMany="false">
+		<db-attribute-pair source="idElementWith" target="idElement"/>
+	</db-relationship>
+	<db-relationship name="toSymmetries" source="Status_Needs" target="Symmetries" toMany="false">
+		<db-attribute-pair source="idSymmetryOf" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="toSymmetries1" source="Status_Needs" target="Symmetries" toMany="false">
+		<db-attribute-pair source="idSymmetryWith" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="energytableses" source="Symmetries" target="EnergyTables" toMany="true">
+		<db-attribute-pair source="idSymmetry" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="partitionfunctionss" source="Symmetries" target="PartitionFunctions" toMany="true">
+		<db-attribute-pair source="idSymmetry" target="idSymmetry"/>
+	</db-relationship>
+	<db-relationship name="statusCurrentworkss" source="Symmetries" target="Status_CurrentWorks" toMany="true">
+		<db-attribute-pair source="idSymmetry" target="idSymmetryOf"/>
+	</db-relationship>
+	<db-relationship name="statusCurrentworkss1" source="Symmetries" target="Status_CurrentWorks" toMany="true">
+		<db-attribute-pair source="idSymmetry" target="idSymmetryWith"/>
+	</db-relationship>
+	<db-relationship name="statusNeedss" source="Symmetries" target="Status_Needs" toMany="true">
+		<db-attribute-pair source="idSymmetry" target="idSymmetryOf"/>
+	</db-relationship>
+	<db-relationship name="statusNeedss1" source="Symmetries" target="Status_Needs" toMany="true">
+		<db-attribute-pair source="idSymmetry" target="idSymmetryWith"/>
+	</db-relationship>
+	<db-relationship name="collisionss" source="Units" target="Collisions" toMany="true">
+		<db-attribute-pair source="idUnit" target="reducedMassUnit"/>
+	</db-relationship>
+	<db-relationship name="energytableses" source="Units" target="EnergyTables" toMany="true">
+		<db-attribute-pair source="idUnit" target="energyUnit"/>
+	</db-relationship>
+	<obj-relationship name="toElements" source="CaseByCase" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="toEnergyTables" source="CaseByCase" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTables"/>
+	<obj-relationship name="memberss" source="CollaborationGroups" target="Members" deleteRule="Deny" db-relationship-path="memberss"/>
+	<obj-relationship name="collisionsProcessuses" source="Collisions" target="CollisionsProcessus" deleteRule="Deny" db-relationship-path="collisionsProcessuses"/>
+	<obj-relationship name="collisionsScientistss" source="Collisions" target="CollisionsScientists" deleteRule="Deny" db-relationship-path="collisionsScientistss"/>
+	<obj-relationship name="fitss" source="Collisions" target="Fits" deleteRule="Deny" db-relationship-path="fitss"/>
+	<obj-relationship name="foreignvaluessetsCollisionss" source="Collisions" target="ForeignValuesSetsCollisions" deleteRule="Deny" db-relationship-path="foreignvaluessetsCollisionss"/>
+	<obj-relationship name="levelgroupss" source="Collisions" target="LevelGroups" deleteRule="Deny" db-relationship-path="levelgroupss"/>
+	<obj-relationship name="matchedenergytablesCollisionss" source="Collisions" target="MatchedEnergyTablesCollisions" deleteRule="Deny" db-relationship-path="matchedenergytablesCollisionss"/>
+	<obj-relationship name="ratecoefficientss" source="Collisions" target="RateCoefficients" deleteRule="Deny" db-relationship-path="ratecoefficientss"/>
+	<obj-relationship name="toCollisions" source="Collisions" target="StatusAvailables" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toContributors" source="Collisions" target="Contributors" deleteRule="Nullify" db-relationship-path="toContributors"/>
+	<obj-relationship name="toEnergyCollider" source="Collisions" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTablesWith"/>
+	<obj-relationship name="toEnergyTarget" source="Collisions" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTablesOf"/>
+	<obj-relationship name="toRefsGroups" source="Collisions" target="RefsGroups" deleteRule="Deny" db-relationship-path="Refs_Groups_ARRAY"/>
+	<obj-relationship name="toRefsMethod" source="Collisions" target="RefsGroups" deleteRule="Deny" db-relationship-path="Refs_Groups_Method"/>
+	<obj-relationship name="toRefsPES" source="Collisions" target="RefsGroups" deleteRule="Deny" db-relationship-path="Refs_Groups_PES"/>
+	<obj-relationship name="toRefsReduMass" source="Collisions" target="RefsGroups" deleteRule="Deny" db-relationship-path="Refs_Groups_RedMass"/>
+	<obj-relationship name="toUnits" source="Collisions" target="Units" deleteRule="Nullify" db-relationship-path="toUnits"/>
+	<obj-relationship name="toCollisions" source="CollisionsProcessus" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toProcessus" source="CollisionsProcessus" target="Processus" deleteRule="Nullify" db-relationship-path="toProcessus"/>
+	<obj-relationship name="toCollisions" source="CollisionsScientists" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toScientists" source="CollisionsScientists" target="Scientists" deleteRule="Nullify" db-relationship-path="toScientists"/>
+	<obj-relationship name="collisionss" source="Contributors" target="Collisions" deleteRule="Deny" db-relationship-path="collisionss"/>
+	<obj-relationship name="elementss" source="ElementTypes" target="Elements" deleteRule="Deny" db-relationship-path="elementss"/>
+	<obj-relationship name="casebycases" source="Elements" target="CaseByCase" deleteRule="Deny" db-relationship-path="casebycases"/>
+	<obj-relationship name="energytableses" source="Elements" target="EnergyTables" deleteRule="Deny" db-relationship-path="energytableses"/>
+	<obj-relationship name="moleculeatomss" source="Elements" target="MoleculeAtoms" deleteRule="Deny" db-relationship-path="moleculeatomss"/>
+	<obj-relationship name="moleculebondss" source="Elements" target="MoleculeBonds" deleteRule="Deny" db-relationship-path="moleculebondss"/>
+	<obj-relationship name="partitionfunctionss" source="Elements" target="PartitionFunctions" deleteRule="Deny" db-relationship-path="partitionfunctionss"/>
+	<obj-relationship name="statusCurrentworkss" source="Elements" target="StatusCurrentWorks" deleteRule="Deny" db-relationship-path="statusCurrentworkss"/>
+	<obj-relationship name="statusCurrentworkss1" source="Elements" target="StatusCurrentWorks" deleteRule="Deny" db-relationship-path="statusCurrentworkss1"/>
+	<obj-relationship name="statusNeedss" source="Elements" target="StatusNeeds" deleteRule="Deny" db-relationship-path="statusNeedss"/>
+	<obj-relationship name="statusNeedss1" source="Elements" target="StatusNeeds" deleteRule="Deny" db-relationship-path="statusNeedss1"/>
+	<obj-relationship name="toElementTypes" source="Elements" target="ElementTypes" deleteRule="Nullify" db-relationship-path="toElementTypes"/>
+	<obj-relationship name="casebycases" source="EnergyTables" target="CaseByCase" deleteRule="Deny" db-relationship-path="casebycases"/>
+	<obj-relationship name="collisionss" source="EnergyTables" target="Collisions" deleteRule="Deny" db-relationship-path="collisionssOf"/>
+	<obj-relationship name="collisionss1" source="EnergyTables" target="Collisions" deleteRule="Deny" db-relationship-path="collisionssWith"/>
+	<obj-relationship name="energytablesLevelss" source="EnergyTables" target="EnergyTablesLevels" deleteRule="Deny" db-relationship-path="energytablesLevelss"/>
+	<obj-relationship name="energytablesProcessuses" source="EnergyTables" target="EnergyTablesProcessus" deleteRule="Deny" db-relationship-path="energytablesProcessuses"/>
+	<obj-relationship name="energytablesQuantumnumberss" source="EnergyTables" target="EnergyTablesQuantumNumbers" deleteRule="Deny" db-relationship-path="energytablesQuantumnumberss"/>
+	<obj-relationship name="hyperfineQnumss" source="EnergyTables" target="HyperfineQNums" deleteRule="Deny" db-relationship-path="hyperfineQnumss"/>
+	<obj-relationship name="matchedenergytableses" source="EnergyTables" target="MatchedEnergyTables" deleteRule="Deny" db-relationship-path="matchedenergytableses"/>
+	<obj-relationship name="toElements" source="EnergyTables" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="toRefsGroups" source="EnergyTables" target="RefsGroups" deleteRule="Nullify" db-relationship-path="toRefsGroups"/>
+	<obj-relationship name="toSymmetries" source="EnergyTables" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries"/>
+	<obj-relationship name="toUnits" source="EnergyTables" target="Units" deleteRule="Nullify" db-relationship-path="toUnits"/>
+	<obj-relationship name="energytablesLevelsQuantumnumberss" source="EnergyTablesLevels" target="EnergyTablesLevelsQuantumNumbers" deleteRule="Deny" db-relationship-path="energytablesLevelsQuantumnumberss"/>
+	<obj-relationship name="foreignvalueses" source="EnergyTablesLevels" target="ForeignValues" deleteRule="Deny" db-relationship-path="foreignvalueses"/>
+	<obj-relationship name="foreignvalueses1" source="EnergyTablesLevels" target="ForeignValues" deleteRule="Deny" db-relationship-path="foreignvalueses1"/>
+	<obj-relationship name="levelgroupss" source="EnergyTablesLevels" target="LevelGroups" deleteRule="Deny" db-relationship-path="levelgroupss"/>
+	<obj-relationship name="levelgroupss1" source="EnergyTablesLevels" target="LevelGroups" deleteRule="Deny" db-relationship-path="levelgroupss1"/>
+	<obj-relationship name="levelgroupss2" source="EnergyTablesLevels" target="LevelGroups" deleteRule="Deny" db-relationship-path="levelgroupss2"/>
+	<obj-relationship name="levelgroupss3" source="EnergyTablesLevels" target="LevelGroups" deleteRule="Deny" db-relationship-path="levelgroupss3"/>
+	<obj-relationship name="matchedenergytablesLevelss" source="EnergyTablesLevels" target="MatchedEnergyTablesLevels" deleteRule="Deny" db-relationship-path="matchedenergytablesLevelss"/>
+	<obj-relationship name="toEnergyTables" source="EnergyTablesLevels" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTables"/>
+	<obj-relationship name="toEnergyTablesLevels" source="EnergyTablesLevelsQuantumNumbers" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toEnergyTablesLevels"/>
+	<obj-relationship name="toQuantumNumbers" source="EnergyTablesLevelsQuantumNumbers" target="QuantumNumbers" deleteRule="Nullify" db-relationship-path="toQuantumNumbers"/>
+	<obj-relationship name="toEnergyTables" source="EnergyTablesProcessus" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTables"/>
+	<obj-relationship name="toProcessus" source="EnergyTablesProcessus" target="Processus" deleteRule="Nullify" db-relationship-path="toProcessus"/>
+	<obj-relationship name="toEnergyTables" source="EnergyTablesQuantumNumbers" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTables"/>
+	<obj-relationship name="toQuantumNumbers" source="EnergyTablesQuantumNumbers" target="QuantumNumbers" deleteRule="Nullify" db-relationship-path="toQuantumNumbers"/>
+	<obj-relationship name="fitss" source="FitEquations" target="Fits" deleteRule="Deny" db-relationship-path="fitss"/>
+	<obj-relationship name="toFits" source="FitValues" target="Fits" deleteRule="Nullify" db-relationship-path="toFits"/>
+	<obj-relationship name="toLevelGroups" source="FitValues" target="LevelGroups" deleteRule="Nullify" db-relationship-path="toLevelGroups"/>
+	<obj-relationship name="fitvalueses" source="Fits" target="FitValues" deleteRule="Deny" db-relationship-path="fitvalueses"/>
+	<obj-relationship name="toCollisions" source="Fits" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toFitEquations" source="Fits" target="FitEquations" deleteRule="Nullify" db-relationship-path="toFitEquations"/>
+	<obj-relationship name="toEnergyTablesLevels" source="ForeignValues" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toEnergyTablesLevels"/>
+	<obj-relationship name="toEnergyTablesLevels1" source="ForeignValues" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toEnergyTablesLevels1"/>
+	<obj-relationship name="toForeignValuesSets" source="ForeignValues" target="ForeignValuesSets" deleteRule="Nullify" db-relationship-path="toForeignValuesSets"/>
+	<obj-relationship name="foreignvalueses" source="ForeignValuesSets" target="ForeignValues" deleteRule="Deny" db-relationship-path="foreignvalueses"/>
+	<obj-relationship name="foreignvaluessetsCollisionss" source="ForeignValuesSets" target="ForeignValuesSetsCollisions" deleteRule="Deny" db-relationship-path="foreignvaluessetsCollisionss"/>
+	<obj-relationship name="toRefsMatchedData" source="ForeignValuesSets" target="RefsMatchedData" deleteRule="Nullify" db-relationship-path="toRefsMatchedData"/>
+	<obj-relationship name="toCollisions" source="ForeignValuesSetsCollisions" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toForeignValuesSets" source="ForeignValuesSetsCollisions" target="ForeignValuesSets" deleteRule="Nullify" db-relationship-path="toForeignValuesSets"/>
+	<obj-relationship name="toEnergyTables" source="HyperfineQNums" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTables"/>
+	<obj-relationship name="toMoleculeAtoms" source="HyperfineQNums" target="MoleculeAtoms" deleteRule="Nullify" db-relationship-path="toMoleculeAtoms"/>
+	<obj-relationship name="toQuantumNumbers" source="HyperfineQNums" target="QuantumNumbers" deleteRule="Nullify" db-relationship-path="toQuantumNumbers"/>
+	<obj-relationship name="toQuantumNumbers1" source="HyperfineQNums" target="QuantumNumbers" deleteRule="Nullify" db-relationship-path="toQuantumNumbers1"/>
+	<obj-relationship name="fitvalueses" source="LevelGroups" target="FitValues" deleteRule="Deny" db-relationship-path="fitvalueses"/>
+	<obj-relationship name="ratecoefficientss" source="LevelGroups" target="RateCoefficients" deleteRule="Deny" db-relationship-path="ratecoefficientss"/>
+	<obj-relationship name="toCollisions" source="LevelGroups" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toETLFinalCollider" source="LevelGroups" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toETLFinalWith"/>
+	<obj-relationship name="toETLFinalTarget" source="LevelGroups" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toETLFinalOf"/>
+	<obj-relationship name="toETLInitCollider" source="LevelGroups" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toETLInitWith"/>
+	<obj-relationship name="toETLInitTarget" source="LevelGroups" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toETLInitOf"/>
+	<obj-relationship name="matchedenergytablesCollisionss" source="MatchedEnergyTables" target="MatchedEnergyTablesCollisions" deleteRule="Deny" db-relationship-path="matchedenergytablesCollisionss"/>
+	<obj-relationship name="matchedenergytablesLevelss" source="MatchedEnergyTables" target="MatchedEnergyTablesLevels" deleteRule="Deny" db-relationship-path="matchedenergytablesLevelss"/>
+	<obj-relationship name="toEnergyTables" source="MatchedEnergyTables" target="EnergyTables" deleteRule="Nullify" db-relationship-path="toEnergyTables"/>
+	<obj-relationship name="toRefsMatchedData" source="MatchedEnergyTables" target="RefsMatchedData" deleteRule="Nullify" db-relationship-path="toRefsMatchedData"/>
+	<obj-relationship name="toCollisions" source="MatchedEnergyTablesCollisions" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toMatchedEnergyTables" source="MatchedEnergyTablesCollisions" target="MatchedEnergyTables" deleteRule="Nullify" db-relationship-path="toMatchedEnergyTables"/>
+	<obj-relationship name="toEnergyTablesLevels" source="MatchedEnergyTablesLevels" target="EnergyTablesLevels" deleteRule="Nullify" db-relationship-path="toEnergyTablesLevels"/>
+	<obj-relationship name="toMatchedEnergyTables" source="MatchedEnergyTablesLevels" target="MatchedEnergyTables" deleteRule="Nullify" db-relationship-path="toMatchedEnergyTables"/>
+	<obj-relationship name="toCollaborationGroups" source="Members" target="CollaborationGroups" deleteRule="Nullify" db-relationship-path="toCollaborationGroups"/>
+	<obj-relationship name="hyperfineQnumss" source="MoleculeAtoms" target="HyperfineQNums" deleteRule="Deny" db-relationship-path="hyperfineQnumss"/>
+	<obj-relationship name="moleculebondss" source="MoleculeAtoms" target="MoleculeBonds" deleteRule="Deny" db-relationship-path="moleculebondss"/>
+	<obj-relationship name="moleculebondss1" source="MoleculeAtoms" target="MoleculeBonds" deleteRule="Deny" db-relationship-path="moleculebondss1"/>
+	<obj-relationship name="nucleus" source="MoleculeAtoms" target="Nuclei" deleteRule="Nullify" db-relationship-path="nucleus"/>
+	<obj-relationship name="toElements" source="MoleculeAtoms" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="atom1" source="MoleculeBonds" target="MoleculeAtoms" deleteRule="Nullify" db-relationship-path="atom1"/>
+	<obj-relationship name="atom2" source="MoleculeBonds" target="MoleculeAtoms" deleteRule="Nullify" db-relationship-path="atom2"/>
+	<obj-relationship name="toElements" source="MoleculeBonds" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="moleculeatomss" source="Nuclei" target="MoleculeAtoms" deleteRule="Deny" db-relationship-path="moleculeatomss"/>
+	<obj-relationship name="partitionfunctionsValueses" source="PartitionFunctions" target="PartitionFunctionsValues" deleteRule="Deny" db-relationship-path="partitionfunctionsValueses"/>
+	<obj-relationship name="toElements" source="PartitionFunctions" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="toRefsGroups" source="PartitionFunctions" target="RefsGroups" deleteRule="Nullify" db-relationship-path="toRefsGroups"/>
+	<obj-relationship name="toSymmetries" source="PartitionFunctions" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries"/>
+	<obj-relationship name="toPartitionFunctions" source="PartitionFunctionsValues" target="PartitionFunctions" deleteRule="Nullify" db-relationship-path="toPartitionFunctions"/>
+	<obj-relationship name="collisionsProcessuses" source="Processus" target="CollisionsProcessus" deleteRule="Deny" db-relationship-path="collisionsProcessuses"/>
+	<obj-relationship name="energytablesProcessuses" source="Processus" target="EnergyTablesProcessus" deleteRule="Deny" db-relationship-path="energytablesProcessuses"/>
+	<obj-relationship name="energytablesLevelsQuantumnumberss" source="QuantumNumbers" target="EnergyTablesLevelsQuantumNumbers" deleteRule="Deny" db-relationship-path="energytablesLevelsQuantumnumberss"/>
+	<obj-relationship name="energytablesQuantumnumberss" source="QuantumNumbers" target="EnergyTablesQuantumNumbers" deleteRule="Deny" db-relationship-path="energytablesQuantumnumberss"/>
+	<obj-relationship name="hyperfineQnumss" source="QuantumNumbers" target="HyperfineQNums" deleteRule="Deny" db-relationship-path="hyperfineQnumss"/>
+	<obj-relationship name="hyperfineQnumss1" source="QuantumNumbers" target="HyperfineQNums" deleteRule="Deny" db-relationship-path="hyperfineQnumss1"/>
+	<obj-relationship name="toCollisions" source="RateCoefficients" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toLevelGroups" source="RateCoefficients" target="LevelGroups" deleteRule="Nullify" db-relationship-path="toLevelGroups"/>
+	<obj-relationship name="refsArticleses" source="RefsAdsnotes" target="RefsArticles" deleteRule="Deny" db-relationship-path="refsArticleses"/>
+	<obj-relationship name="refsArticlesAuthorss" source="RefsArticles" target="RefsArticlesAuthors" deleteRule="Deny" db-relationship-path="refsArticlesAuthorss"/>
+	<obj-relationship name="refsArticlesKeywordss" source="RefsArticles" target="RefsArticlesKeywords" deleteRule="Deny" db-relationship-path="refsArticlesKeywordss"/>
+	<obj-relationship name="refsAuthorsFlat" source="RefsArticles" target="RefsAuthors" deleteRule="Deny" db-relationship-path="refsArticlesAuthorss.toRefsAuthors"/>
+	<obj-relationship name="refsGroupss" source="RefsArticles" target="RefsGroups" deleteRule="Deny" db-relationship-path="refsGroupss"/>
+	<obj-relationship name="toRefsAdsnotes" source="RefsArticles" target="RefsAdsnotes" deleteRule="Nullify" db-relationship-path="toRefsAdsnotes"/>
+	<obj-relationship name="toRefsJournals" source="RefsArticles" target="RefsJournals" deleteRule="Nullify" db-relationship-path="toRefsJournals"/>
+	<obj-relationship name="toRefsArticles" source="RefsArticlesAuthors" target="RefsArticles" deleteRule="Nullify" db-relationship-path="toRefsArticles"/>
+	<obj-relationship name="toRefsAuthors" source="RefsArticlesAuthors" target="RefsAuthors" deleteRule="Nullify" db-relationship-path="toRefsAuthors"/>
+	<obj-relationship name="toRefsArticles" source="RefsArticlesKeywords" target="RefsArticles" deleteRule="Nullify" db-relationship-path="toRefsArticles"/>
+	<obj-relationship name="toRefsKeywords" source="RefsArticlesKeywords" target="RefsKeywords" deleteRule="Nullify" db-relationship-path="toRefsKeywords"/>
+	<obj-relationship name="refsArticlesAuthorss" source="RefsAuthors" target="RefsArticlesAuthors" deleteRule="Deny" db-relationship-path="refsArticlesAuthorss"/>
+	<obj-relationship name="collisionss" source="RefsGroups" target="Collisions" deleteRule="Deny" db-relationship-path="collisionss"/>
+	<obj-relationship name="collisionss1" source="RefsGroups" target="Collisions" deleteRule="Deny" db-relationship-path="collisionss1"/>
+	<obj-relationship name="collisionss2" source="RefsGroups" target="Collisions" deleteRule="Deny" db-relationship-path="collisionss2"/>
+	<obj-relationship name="collisionss3" source="RefsGroups" target="Collisions" deleteRule="Deny" db-relationship-path="collisionss3"/>
+	<obj-relationship name="energytableses" source="RefsGroups" target="EnergyTables" deleteRule="Deny" db-relationship-path="energytableses"/>
+	<obj-relationship name="partitionfunctionss" source="RefsGroups" target="PartitionFunctions" deleteRule="Deny" db-relationship-path="partitionfunctionss"/>
+	<obj-relationship name="toRefsArticles" source="RefsGroups" target="RefsArticles" deleteRule="Nullify" db-relationship-path="toRefsArticles"/>
+	<obj-relationship name="refsArticleses" source="RefsJournals" target="RefsArticles" deleteRule="Deny" db-relationship-path="refsArticleses"/>
+	<obj-relationship name="refsArticlesKeywordss" source="RefsKeywords" target="RefsArticlesKeywords" deleteRule="Deny" db-relationship-path="refsArticlesKeywordss"/>
+	<obj-relationship name="toRefsKeywordsCategories" source="RefsKeywords" target="RefsKeywordsCategories" deleteRule="Nullify" db-relationship-path="toRefsKeywordsCategories"/>
+	<obj-relationship name="refsKeywordss" source="RefsKeywordsCategories" target="RefsKeywords" deleteRule="Deny" db-relationship-path="refsKeywordss"/>
+	<obj-relationship name="foreignvaluessetss" source="RefsMatchedData" target="ForeignValuesSets" deleteRule="Deny" db-relationship-path="foreignvaluessetss"/>
+	<obj-relationship name="matchedenergytableses" source="RefsMatchedData" target="MatchedEnergyTables" deleteRule="Deny" db-relationship-path="matchedenergytableses"/>
+	<obj-relationship name="toSpectroDatabases" source="RefsMatchedData" target="SpectroDatabases" deleteRule="Nullify" db-relationship-path="toSpectroDatabases"/>
+	<obj-relationship name="collisionsScientistss" source="Scientists" target="CollisionsScientists" deleteRule="Deny" db-relationship-path="collisionsScientistss"/>
+	<obj-relationship name="refsMatcheddatas" source="SpectroDatabases" target="RefsMatchedData" deleteRule="Deny" db-relationship-path="refsMatcheddatas"/>
+	<obj-relationship name="toCollisions" source="StatusAvailables" target="Collisions" deleteRule="Nullify" db-relationship-path="toCollisions"/>
+	<obj-relationship name="toElements" source="StatusCurrentWorks" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="toElements1" source="StatusCurrentWorks" target="Elements" deleteRule="Nullify" db-relationship-path="toElements1"/>
+	<obj-relationship name="toSymmetries" source="StatusCurrentWorks" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries"/>
+	<obj-relationship name="toSymmetries1" source="StatusCurrentWorks" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries1"/>
+	<obj-relationship name="toElements" source="StatusNeeds" target="Elements" deleteRule="Nullify" db-relationship-path="toElements"/>
+	<obj-relationship name="toElements1" source="StatusNeeds" target="Elements" deleteRule="Nullify" db-relationship-path="toElements1"/>
+	<obj-relationship name="toSymmetries" source="StatusNeeds" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries"/>
+	<obj-relationship name="toSymmetries1" source="StatusNeeds" target="Symmetries" deleteRule="Nullify" db-relationship-path="toSymmetries1"/>
+	<obj-relationship name="energytableses" source="Symmetries" target="EnergyTables" deleteRule="Deny" db-relationship-path="energytableses"/>
+	<obj-relationship name="partitionfunctionss" source="Symmetries" target="PartitionFunctions" deleteRule="Deny" db-relationship-path="partitionfunctionss"/>
+	<obj-relationship name="statusCurrentworkss" source="Symmetries" target="StatusCurrentWorks" deleteRule="Deny" db-relationship-path="statusCurrentworkss"/>
+	<obj-relationship name="statusCurrentworkss1" source="Symmetries" target="StatusCurrentWorks" deleteRule="Deny" db-relationship-path="statusCurrentworkss1"/>
+	<obj-relationship name="statusNeedss" source="Symmetries" target="StatusNeeds" deleteRule="Deny" db-relationship-path="statusNeedss"/>
+	<obj-relationship name="statusNeedss1" source="Symmetries" target="StatusNeeds" deleteRule="Deny" db-relationship-path="statusNeedss1"/>
+	<obj-relationship name="collisionss" source="Units" target="Collisions" deleteRule="Deny" db-relationship-path="collisionss"/>
+	<obj-relationship name="energytableses" source="Units" target="EnergyTables" deleteRule="Deny" db-relationship-path="energytableses"/>
+</data-map>
