@@ -66,7 +66,7 @@ public class ElementBuilder {
 				result = result.orExp(collExpr);
 		}else{
 			//No prefixes are defined, so sad, let's try unprefixed VSS1 mode
-			result = Restrictables.queryMapper.mapTree(request.getRestrictsTree(),Restrictables.QUERY_ETABL);
+			result = Restrictables.queryMapper.mapTree(request.getQueryTree(),Restrictables.QUERY_ETABL);
 		}
 		return result;
 	}

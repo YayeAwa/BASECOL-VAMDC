@@ -45,7 +45,7 @@ public class CollisionalTransitionBuilder {
 		
 		//Build limit expression
 		Expression myExpression =
-				Restrictables.queryMapper.mapTree(request.getRestrictsTree(), Restrictables.RATES);
+				Restrictables.queryMapper.mapTree(request.getQueryTree(), Restrictables.RATES);
 
 		if (myExpression != null) rcexpr=rcexpr.joinExp(0, myExpression);
 		else System.out.println(" MyExpressions est null");
@@ -169,12 +169,12 @@ public class CollisionalTransitionBuilder {
 		}else{
 			//No prefixes are defined, so sad, let's try unprefixed VSS1 mode
 			Expression unpref = Restrictables.queryMapper.mapAliasedTree(
-					myrequest.getRestrictsTree(), 
+					myrequest.getQueryTree(), 
 					Restrictables.QUERY_COLLISION, 
 					Restrictables.PARTY,
 					Restrictables.TARGET);
 			result = Restrictables.queryMapper.mapAliasedTree(
-					myrequest.getRestrictsTree(), 
+					myrequest.getQueryTree(), 
 					Restrictables.QUERY_COLLISION,
 					Restrictables.PARTY,
 					Restrictables.COLLIDER);
