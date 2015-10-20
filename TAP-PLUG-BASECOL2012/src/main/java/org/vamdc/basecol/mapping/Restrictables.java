@@ -25,7 +25,7 @@ public class Restrictables {
 	 *    depending on the restrictable prefixes
 	 */
 	public final static QueryMapper queryMapper= new QueryMapperImpl(){{
-		this.addMapper(
+		this.addKeywordMapper(
 				new SpecieNameMapper(Restrictable.AtomSymbol,
 						new Byte(ElementTypes.Atom))
 				//.addNewPath("symelementRel.elementRel.stoichiometricFormula")
@@ -35,7 +35,7 @@ public class Restrictables {
 				.addNewPath("")
 				);
 		
-		this.addMapper(
+		this.addKeywordMapper(
 				new SpecieNameMapper(Restrictable.MoleculeStoichiometricFormula,
 						new Byte(ElementTypes.Molecule),
 						new Byte(ElementTypes.MolecIonNegative),
@@ -46,7 +46,7 @@ public class Restrictables {
 				.addNewPath("")
 				);
 		
-		this.addMapper(
+		this.addKeywordMapper(
 				new SpecieNameMapper(Restrictable.ParticleName,
 						new Byte(ElementTypes.Particle))
 				//.addNewPath("symelementRel.elementRel.stoichiometricFormula")
@@ -56,12 +56,12 @@ public class Restrictables {
 				.addNewPath("")
 				);
 		
-		this.addMapper(
+		this.addKeywordMapper(
 				new CollisionCodeMapper(Restrictable.CollisionCode)
 				.addNewPath("").addNewPath("")
 				.addNewPath("")//We need to have same paths count even for dummy mappers
 				);
-		this.addMapper(
+		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.InchiKey)
 				//.addNewPath("symelementRel.elementRel.inchiRel.inchiKey")
 				.addNewPath("toElements.inchiKey")
@@ -69,7 +69,7 @@ public class Restrictables {
 				.addNewPath("toEnergyParty.toElements.inchiKey")
 				.addNewPath("")
 				);
-		this.addMapper(
+		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.MoleculeStateNuclearSpinIsomer)
 				//.addNewPath("symelementRel.symmetryRel.designation")
 				.addNewPath("toSymmetries.designation")
@@ -77,14 +77,14 @@ public class Restrictables {
 				.addNewPath("toEnergyParty.toSymmetries.designation")
 				.addNewPath("")
 				);
-		this.addMapper(
+		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.SourceYear)
 				//.addNewPath("articleRel.year")
 				.addNewPath("toRefsGroups.toRefsArticles.year")
 				.addNewPath("year")
 				.addNewPath("")
 				);
-		this.addMapper(
+		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.StateEnergy)
 				//.addNewPath("levelsRel.energy")
 				.addNewPath("energytablesLevelss.energy")//en partant de ETable
@@ -92,14 +92,14 @@ public class Restrictables {
 				.addNewPath("toEnergyTables.energytablesLevelss.energy")//en partant de collision
 				.addNewPath("")
 				);
-		this.addMapper(
+		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.EnvironmentTemperature)
 				.addNewPath("")
 				//.addNewPath("myRateCoeffRel.temperature")
 				.addNewPath("ratecoefficientss.temperature")
 				.addNewPath("temperature")// en partant de RateCoefficient table
 				);
-		this.addMapper(
+		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.IonCharge)
 				//.addNewPath("symelementRel.elementRel.charge")
 				.addNewPath("toElements.charge")
