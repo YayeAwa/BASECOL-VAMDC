@@ -30,7 +30,7 @@ public class AtomicTypeBuilder {
 		String atomID = IDs.getSpecieID(myetable.getToElements().getIdElement().intValue());
 		if (myrequest.getXsamsManager().getElement(atomID)==null)
 		{//build atom description only in case we don't have it yet, in other case just add states
-			AtomType myatom = new Atom(myetable);
+			AtomType myatom = new Atom(myetable.getToElements());
 		
 			//Add atom to XSAMS tree
 			myrequest.getXsamsManager().addElement(myatom);
@@ -40,11 +40,10 @@ public class AtomicTypeBuilder {
 			DataContext context = (DataContext)myrequest.getCayenneContext();
 			Expression levelsspec = ExpressionFactory.matchExp("toEnergyTables.idEnergyTable",myetable.getIdEnergyTable());
 			SelectQuery query = new SelectQuery(EnergyTablesLevels.class, levelsspec);
-			query.addPrefetch("energytablesLevelsQuantumnumberss");//query.addPrefetch("qNumbersRel");
+			query.addPrefetch("energytablesLevelsQuantumnumberss");
 
 			//Load sources
 			List<RefsGroups> refs=myetable.getRefsGroupsFromIdRefGroups(context);
-			System.out.println("et"+myetable.getIdEnergyTable()+"list "+refs.size());
 			
 			/*TODO:
 			 * Here add restrictables processing

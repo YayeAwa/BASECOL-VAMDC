@@ -13,9 +13,7 @@ import org.vamdc.xsams.util.XsamsUnits;
 
 public class Atom extends AtomType{
 
-	public Atom(EnergyTables myetable){
-		Elements myelement = myetable.getToElements();//getElementRel();
-		
+	public Atom(Elements myelement){
 		this.setChemicalElement(new ChemicalElementType(myelement.getStoichiometricFormula()));
 		
 		IsotopeType isot = new IsotopeType();
@@ -26,7 +24,7 @@ public class Atom extends AtomType{
 		
 		ion.setIonCharge(myelement.getCharge().intValue());
 		
-		ion.setInChIKey(myelement.getInchiKey());/*getInchiRel().getInchiKey()*/
+		ion.setInChIKey(myelement.getInchiKey());
 		ion.setSpeciesID(IDs.getSpecieID(myelement.getIdElement().intValue()));
 		
 		IsotopeParametersType ipt = new IsotopeParametersType();
