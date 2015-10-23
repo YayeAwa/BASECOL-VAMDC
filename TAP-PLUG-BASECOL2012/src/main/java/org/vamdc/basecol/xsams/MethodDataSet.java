@@ -23,7 +23,7 @@ public class MethodDataSet extends MethodType{
 	}
 	
 	private static String getMethodID(Collisions data){
-		return IDs.getMethodID((int)data.getIdCollision()/*getIdCollision().intValue()*/)+"D";
+		return IDs.getMethodID((int)data.getIdCollision())+"D";
 	}
 	
 	public static MethodType getMethod(Collisions data,XSAMSManager document){

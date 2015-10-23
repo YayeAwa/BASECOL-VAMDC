@@ -25,7 +25,7 @@ public class BasecolMoleculeStructure extends MoleculeStructureType{
 	
 	private BondArray getBonds(Elements myElement) {
 		BondArray bonds = new BondArray();
-		for (MoleculeBonds bond:myElement.getMoleculebondss())/*getStructBondsRel())*/{
+		for (MoleculeBonds bond:myElement.getMoleculebondss()){
 			bonds.getBonds().add(new CMLBond(bond,myElement.getIdElement().intValue()));
 		}
 		
@@ -34,7 +34,7 @@ public class BasecolMoleculeStructure extends MoleculeStructureType{
 
 	private AtomArray getAtoms(Elements myElement){
 		AtomArray atoms = new AtomArray();
-		for (MoleculeAtoms atom:myElement.getMoleculeatomss()/*getStructRel()*/){
+		for (MoleculeAtoms atom:myElement.getMoleculeatomss()){
 			atoms.getAtoms().add(new CMLAtom(atom,myElement.getIdElement().intValue()));
 		}
 		return atoms;
@@ -43,12 +43,12 @@ public class BasecolMoleculeStructure extends MoleculeStructureType{
 	private class CMLAtom extends Atom{
 		
 		public CMLAtom(MoleculeAtoms atom, Integer idElement){
-			setCount(atom.getAtomCount().doubleValue());
-			setElementType(atom.getNucleus().getSymbol()/*getNucleiRel()*/);
+			//setCount(atom.getAtomCount().doubleValue()); it is not mandatory
+			setElementType(atom.getNucleus().getSymbol());
 			setFormalCharge(atom.getAtomCharge().intValue());
 			setHydrogenCount(atom.getHydrogenCount().intValue());
 			setIsotopeNumber(atom.getNucleus().getIsotope());
-			setId(getAtomID(idElement,atom.getAtomId()/*getAtomID()*/));
+			setId(getAtomID(idElement,atom.getAtomId()));
 			
 		}
 		
@@ -56,8 +56,10 @@ public class BasecolMoleculeStructure extends MoleculeStructureType{
 	
 	private class CMLBond extends Bond{
 		public CMLBond(MoleculeBonds bond,Integer idElement){
-			getAtomRefs2s().add(getAtomID(idElement,bond.getAtom1().getAtomId()/*getAtom1Rel().getAtomID()*/));
-			getAtomRefs2s().add(getAtomID(idElement,bond.getAtom2().getAtomId()/*getAtom2Rel().getAtomID()*/));
+			getAtomRefs2s().add(
+					getAtomID(idElement,bond.getAtom1().getAtomId()));
+			getAtomRefs2s().add(
+					getAtomID(idElement,bond.getAtom2().getAtomId()));
 			setOrder(bond.getBondOrder());
 		}
 	}

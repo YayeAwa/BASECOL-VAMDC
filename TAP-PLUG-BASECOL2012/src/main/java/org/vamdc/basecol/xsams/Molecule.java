@@ -12,11 +12,11 @@ import org.vamdc.xsams.species.molecules.ReferencedTextType;
 public class Molecule extends MoleculeType{
 
 	public Molecule(EnergyTables etable){
-		MolecularChemicalSpeciesType mcst =  buildMolecularChemicalSpecies(etable.getToElements()/*getElementRel()*/);
+		MolecularChemicalSpeciesType mcst =  buildMolecularChemicalSpecies(etable.getToElements());
 		this.setMolecularChemicalSpecies(mcst);
 		
 		mcst.setComment(etable.getTitle());
-		mcst.getMoleculeStructures().add(new BasecolMoleculeStructure(etable.getToElements()/*getElementRel()*/));
+		mcst.getMoleculeStructures().add(new BasecolMoleculeStructure(etable.getToElements()));
 		
 	}
 	
@@ -25,12 +25,11 @@ public class Molecule extends MoleculeType{
 			MolecularChemicalSpeciesType mol = new MolecularChemicalSpeciesType();
 			mol.setChemicalName(new ReferencedTextType(element.getDesignation()));
 			mol.setOrdinaryStructuralFormula(new ReferencedTextType(element.getLatex()));
-			/*Inchi myinchi = element.getInchiRel();/*This could be null*//*there are no table Inchi anymore*/
-			if (/*myinchi*/element.getInchi()!=null){
-				mol.setInChI(/*myinchi*/element.getInchi());
-				mol.setInChIKey(/*myinchi*/element.getInchiKey());
-				mol.setVAMDCSpeciesID(/*myinchi*/element.getInchiKey());
-			};
+			if (element.getInchi()!=null){
+				mol.setInChI(element.getInchi());
+				mol.setInChIKey(element.getInchiKey());
+				mol.setVAMDCSpeciesID(element.getInchiKey());
+			}
 			mol.setStoichiometricFormula(element.getStoichiometricFormula());
 
 

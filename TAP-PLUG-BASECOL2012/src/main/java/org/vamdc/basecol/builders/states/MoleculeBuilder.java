@@ -64,7 +64,7 @@ public class MoleculeBuilder {
 		DataContext context = (DataContext)request.getCayenneContext();
 		Expression levelsspec = ExpressionFactory.matchExp("toEnergyTables.idEnergyTable",eTable.getIdEnergyTable());
 		SelectQuery query = new SelectQuery(EnergyTablesLevels.class, levelsspec);
-		query.addPrefetch("energytablesLevelsQuantumnumberss");//query.addPrefetch("qNumbersRel");
+		query.addPrefetch("energytablesLevelsQuantumnumberss");
 		
 		//Load sources
 		List<RefsGroups> refs=eTable.getRefsGroupsFromIdRefGroups(context);
@@ -117,5 +117,4 @@ public class MoleculeBuilder {
 		}
 		return result;
 	}
-
 }

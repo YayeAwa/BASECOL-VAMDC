@@ -28,9 +28,7 @@ public class Restrictables {
 		this.addKeywordMapper(
 				new SpecieNameMapper(Restrictable.AtomSymbol,
 						new Byte(ElementTypes.Atom))
-				//.addNewPath("symelementRel.elementRel.stoichiometricFormula")
 				.addNewPath("toElements.stoichiometricFormula")//ETable
-				//.addNewPath("partyRel.elementRel.stoichiometricFormula")
 				.addNewPath("toEnergyParty.toElements.stoichiometricFormula")//collision
 				.addNewPath("")
 				);
@@ -40,7 +38,6 @@ public class Restrictables {
 						new Byte(ElementTypes.Molecule),
 						new Byte(ElementTypes.MolecIonNegative),
 						new Byte(ElementTypes.MolecIonPositive))
-				//.addNewPath("symelementRel.elementRel.stoichiometricFormula")
 				.addNewPath("toElements.stoichiometricFormula")//ETable
 				.addNewPath("toEnergyParty.toElements.stoichiometricFormula")
 				.addNewPath("")
@@ -49,8 +46,6 @@ public class Restrictables {
 		this.addKeywordMapper(
 				new SpecieNameMapper(Restrictable.ParticleName,
 						new Byte(ElementTypes.Particle))
-				//.addNewPath("symelementRel.elementRel.stoichiometricFormula")
-				//.addNewPath("partyRel.elementRel.stoichiometricFormula")
 				.addNewPath("toElements.stoichiometricFormula")//ETable
 				.addNewPath("toEnergyParty.toElements.stoichiometricFormula")
 				.addNewPath("")
@@ -63,47 +58,37 @@ public class Restrictables {
 				);
 		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.InchiKey)
-				//.addNewPath("symelementRel.elementRel.inchiRel.inchiKey")
 				.addNewPath("toElements.inchiKey")
-				//.addNewPath("partyRel.elementRel.inchiRel.inchiKey")
 				.addNewPath("toEnergyParty.toElements.inchiKey")
 				.addNewPath("")
 				);
 		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.MoleculeStateNuclearSpinIsomer)
-				//.addNewPath("symelementRel.symmetryRel.designation")
 				.addNewPath("toSymmetries.designation")
-				//.addNewPath("partyRel.symmetryRel.designation")
 				.addNewPath("toEnergyParty.toSymmetries.designation")
 				.addNewPath("")
 				);
 		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.SourceYear)
-				//.addNewPath("articleRel.year")
 				.addNewPath("toRefsGroups.toRefsArticles.year")
 				.addNewPath("year")
 				.addNewPath("")
 				);
 		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.StateEnergy)
-				//.addNewPath("levelsRel.energy")
 				.addNewPath("energytablesLevelss.energy")//en partant de ETable
-				//.addNewPath("partyETableRel.levelsRel.energy")
 				.addNewPath("toEnergyTables.energytablesLevelss.energy")//en partant de collision
 				.addNewPath("")
 				);
 		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.EnvironmentTemperature)
 				.addNewPath("")
-				//.addNewPath("myRateCoeffRel.temperature")
 				.addNewPath("ratecoefficientss.temperature")
 				.addNewPath("temperature")// en partant de RateCoefficient table
 				);
 		this.addKeywordMapper(
 				new KeywordMapperImpl(Restrictable.IonCharge)
-				//.addNewPath("symelementRel.elementRel.charge")
 				.addNewPath("toElements.charge")
-				//.addNewPath("partyRel.elementRel.charge")
 				.addNewPath("toEnergyParty.toElements.charge")
 				.addNewPath("")
 				);

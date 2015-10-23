@@ -19,7 +19,7 @@ public class Particle extends ParticleType{
 	
 	public Particle(EnergyTables etable){
 		
-	this.setName(basecolParticles.get(etable.getToElements()./*getElementRel().*/getDesignation()));
+	this.setName(basecolParticles.get(etable.getToElements().getDesignation()));
 	this.setComments(etable.getTitle());
 	
 	String id=IDs.getSpecieID(etable.getIdEnergyTable().intValue());

@@ -77,7 +77,6 @@ public class CollisionalTransitionBuilder {
 		allRefs.addAll(data.getRefsGroupsFromIdRefPES(context));
 		
 		for (RatesTemperatureMap rates:RateCoefficients.getTempDependency((DataContext)request.getCayenneContext(), rcexpr)){
-			//System.out.println("ratecoeff levels"+keys.fCLevel+keys.fTLevel+keys.iCLevel+keys.iTLevel);
 
 			if (!xsamsroot.addProcess(new Collision(xsamsroot,data,rates,levelmap,allRefs,methodRefs)))
 				return false;

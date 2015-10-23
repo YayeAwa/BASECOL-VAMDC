@@ -47,7 +47,7 @@ public class MethodCollision extends MethodType{
 	}
 	
 	private static String getMethodID(Collisions data){
-		return IDs.getMethodID((int)data.getIdCollision()/*getIdCollision().intValue()*/);
+		return IDs.getMethodID((int)data.getIdCollision());
 	}
 	
 	public static MethodType getMethod(Collisions data,XSAMSManager document,List<RefsGroups> methodrefs){

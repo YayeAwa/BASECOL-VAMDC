@@ -19,14 +19,14 @@ public class BasecolStateCore extends StateCore {
 	public BasecolStateCore(EnergyTables myetable,
 			EnergyTablesLevels levels) {
 
-		this.setID(IDs.getStateID(myetable.getIdEnergyTable().intValue(),levels.getLevel().intValue()));///*getIdEnergyTable()*/
+		this.setID(IDs.getStateID(myetable.getIdEnergyTable().intValue(),levels.getLevel().intValue()));
 		this.setEnergy(levels.getEnergy());
-		this.setEnergyUnits(BasecolUnits.getXSAMSUnit(levels.getToEnergyTables().getToUnits().getIdUnit().intValue()));// getLvlEtableRel().getEnergyUnit()
+		this.setEnergyUnits(BasecolUnits.getXSAMSUnit(levels.getToEnergyTables().getToUnits().getIdUnit().intValue()));
 		this.setEnergyOrigin(myetable.getEnergyOrigin());
 
 		CaseByCase mycase=null;
 
-		List<CaseByCase> cases= myetable.getCasebycases();//myetable.getToElements().getCasebycases();
+		List<CaseByCase> cases= myetable.getCasebycases();
 		
 		if (cases==null||cases.size()!=1){
 			cases = myetable.getToElements().getCasebycases();
@@ -47,7 +47,7 @@ public class BasecolStateCore extends StateCore {
 			this.setCaseID(0);
 		}
 
-		this.setNuclearspinsymmetry(myetable.getToSymmetries()/*getSymelementRel().getSymmetryRel()*/.getDesignation());
+		this.setNuclearspinsymmetry(myetable.getToSymmetries().getDesignation());
 
 		this.setDescription(myetable.getTitle());
 
@@ -55,7 +55,7 @@ public class BasecolStateCore extends StateCore {
 
 		//add state quantum numbers:
 		List<HyperfineQNums> hfqns= myetable.getHyperfineQnumss();
-		for (EnergyTablesLevelsQuantumNumbers myqn:levels.getEnergytablesLevelsQuantumnumberss()/*getQNumbersRel()*/){
+		for (EnergyTablesLevelsQuantumNumbers myqn:levels.getEnergytablesLevelsQuantumnumberss()){
 			QNType type = BasecolQuantumNumber.GetCaseQNType(myqn.getIdQuantumNumber().intValue());
 			if (type!=null){
 				QuantumNumber qNum = new QuantumNumber();
